@@ -1,4 +1,4 @@
-package com.autumn.demo.javabase.base;
+package com.autumn.demo.javabase.algorithm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @date 2018/11/12 17:58
  * @description
  */
-public class Utils {
+public class Round_Robin {
     AtomicInteger engineIndex = new AtomicInteger(0);
 
     private synchronized String selectEngineServer() {
@@ -27,7 +27,7 @@ public class Utils {
     }
 
     public static void main(String[] args) {
-        Utils obj = new Utils();
+        Round_Robin obj = new Round_Robin();
         for (int i = 0; i<10; i++) {
             obj.selectEngineServer();
         }

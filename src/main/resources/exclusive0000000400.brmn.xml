@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definition>
+    <!--POSP-->
+    <process id="ROUTE_000000_0400" name="xip-rspcode-log8">
+
+        <activity id="xip" name="xip" moduleCode="M009" initial="true"/>
+        <exclusive id="gateWayBegin" name="gateWayBegin" />
+        <activity id="rspcode" name="rspcode" moduleCode="M008"/>
+        <exclusive id="gateWayEnd" name="gateWayEnd"/>
+        <activity id="plogstart" name="plogstart" moduleCode="M888"/>
+
+        <transition id="xip" name="xip_gateWayBegin"
+                    from="xip" to="gateWayBegin" />
+
+        <!--不走rspcode分支-->
+        <transition id="gateWayBegin_gateWayEnd" name="gateWayBegin_gateWayEnd"
+                    from="gateWayBegin" to="gateWayEnd" condition="($retCode == 0000)" />
+        <!--走rspcode分支-->
+        <transition id="gateWayBegin_rspcode" name="gateWayBegin_rspcode"
+                    from="gateWayBegin" to="rspcode" condition="($retCode != 0000)"/>
+        <transition id="rspcode_gateWayEnd" name="rspcode_gateWayEnd"
+                    from="rspcode" to="gateWayEnd" />
+
+        <transition id="gateWayEnd_plogstart" name="gateWayEnd_plogstart"
+                    from="gateWayEnd" to="plogstart" />
+    </process>
+
+</definition>

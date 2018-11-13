@@ -1,4 +1,4 @@
-package com.autumn.demo.javabase.base;
+package com.autumn.demo.javabase.algorithm;
 
 import java.util.HashMap;
 import java.util.Map;
