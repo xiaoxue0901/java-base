@@ -9,6 +9,11 @@ import java.util.regex.Pattern;
  * @description
  */
 public class RegexMatchers {
+    public static final String A_B= "123";
+    public static void test() {
+        System.out.println("调用静态方法");
+    }
+
     public static void main(String args[]) {
         String str = "0.993";
 //        String pattern = "^[0](.[0-9]{2}$)";
@@ -17,5 +22,11 @@ public class RegexMatchers {
         Pattern r = Pattern.compile(pattern);
         Matcher m = r.matcher(str);
         System.out.println(m.matches());
+
+        RegexMatchers regexMatchers = new RegexMatchers();
+        System.out.println(regexMatchers.A_B);
+        System.out.println(RegexMatchers.A_B);
+       regexMatchers.test();
+       RegexMatchers.test();
     }
 }
