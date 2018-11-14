@@ -3,7 +3,7 @@ package com.autumn.demo.javabase.designpattern.demo06_prototype.Sample;
 
 import com.autumn.demo.javabase.designpattern.demo06_prototype.Sample.framework.Product;
 
-public class MessageBox implements Product {
+public class MessageBox implements Product<MessageBox> {
     private char decochar;
     public MessageBox(char decochar) {
         this.decochar = decochar;
@@ -28,5 +28,25 @@ public class MessageBox implements Product {
             e.printStackTrace();
         }
         return p;
+    }
+
+
+    @Override
+    public MessageBox createT() {
+        MessageBox m = null;
+        try {
+            m = (MessageBox) clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return m;
+    }
+
+    public char getDecochar() {
+        return decochar;
+    }
+
+    public void setDecochar(char decochar) {
+        this.decochar = decochar;
     }
 }

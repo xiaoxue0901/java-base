@@ -15,7 +15,7 @@ public class RegexMatchers {
     }
 
     public static void main(String args[]) {
-        String str = "0.993";
+        String str = "1";
 //        String pattern = "^[0](.[0-9]{2}$)";
         String pattern = "^[0](.[0-9]{2}$)|[1](.[0]{2}$)";
 

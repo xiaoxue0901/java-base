@@ -27,6 +27,10 @@ public class Main {
         Product p3 = manager.create("slash box");
         p3.use("Hello, world.");
 
+        MessageBox clonea = (MessageBox) manager.createBean("warning box");
+        clonea.use("hello, world...");
+        System.out.println(clonea.getDecochar());
+
         /*******************************/
         Car car = new Car("brand", 10000);
         Person person = new Person("测试", 23, car);

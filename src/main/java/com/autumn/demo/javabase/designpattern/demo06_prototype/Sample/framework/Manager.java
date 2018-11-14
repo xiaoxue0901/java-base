@@ -5,7 +5,7 @@ import com.autumn.demo.javabase.designpattern.demo06_prototype.Sample.deepclone.
 import java.io.*;
 import java.util.*;
 
-public class Manager {
+public class Manager<T> {
     private HashMap showcase = new HashMap();
     private HashMap<String, Person> deep = new HashMap();
     public void register(String name, Product proto) {
@@ -15,6 +15,14 @@ public class Manager {
         Product p = (Product)showcase.get(protoname);
         return p.createClone();
     }
+
+
+
+    public T createBean(String name) {
+        Product p = (Product) showcase.get(name);
+        return (T) p.createT();
+    }
+
 
     public void register(String name, Person proto) {
         deep.put(name, proto);

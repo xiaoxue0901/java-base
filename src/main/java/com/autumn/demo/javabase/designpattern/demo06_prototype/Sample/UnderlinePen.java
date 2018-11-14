@@ -3,7 +3,7 @@ package com.autumn.demo.javabase.designpattern.demo06_prototype.Sample;
 
 import com.autumn.demo.javabase.designpattern.demo06_prototype.Sample.framework.Product;
 
-public class UnderlinePen implements Product {
+public class UnderlinePen implements Product<UnderlinePen> {
     private char ulchar;
     public UnderlinePen(char ulchar) {
         this.ulchar = ulchar;
@@ -25,5 +25,16 @@ public class UnderlinePen implements Product {
             e.printStackTrace();
         }
         return p;
+    }
+
+    @Override
+    public UnderlinePen createT() {
+        UnderlinePen u = null;
+        try {
+             u = (UnderlinePen) clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return u;
     }
 }
