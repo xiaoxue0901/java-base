@@ -7,7 +7,7 @@ package com.autumn.demo.javabase.yb.way1;
  */
 public class Test {
     public static void main(String[] args) {
-        // 调用异步任务
+        // 调用异步任务: 1. 处理计算任务; 2.
         new AsynTask().task(new MyCallBack() {
             // 实现回调方法
             @Override
@@ -15,6 +15,8 @@ public class Test {
                 System.out.println("异步回调处理: 值"+object);
             }
         });
+
+        new AsynTask().task((obj) -> System.out.println("使用lambda表达式:"+obj));
 
         System.out.println("主线程等待异步输出");
         try {
