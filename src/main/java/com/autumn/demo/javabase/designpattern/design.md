@@ -1,6 +1,12 @@
 <h1>设计模式说明</h1>
 ---
-`代码地址:com.autumn.demo.javabase.designpattern包下存放的是23中设计模式的代码示例 `
+> 代码地址:`com.autumn.demo.javabase.designpattern`包下存放的是23中设计模式的代码示例
+
+<h2>Iterator模式</h2>
+
+> 迭代器模式: 用于在数据集合中按顺序遍历集合.
+
+
 
 <h2>07-Builder(建造者)模式</h2>
 `说明: Builder模式-组装复杂的实例`
