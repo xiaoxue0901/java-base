@@ -2,6 +2,7 @@ package com.autumn.demo.javabase.lambda.demo1;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -31,6 +32,10 @@ public class DemoLambda3 {
         return a.toUpperCase();
     }
 
+    private static Integer getLength(String len1, String len2) {
+        return len1.length() + len2.length();
+    }
+
     /**
      * 静态方法引用
      */
@@ -40,12 +45,22 @@ public class DemoLambda3 {
         // 静态方法的引用:只有输出
         Supplier<String> supplier2 = DemoLambda3::get;
 
-        Consumer<Integer> consumer = (size) -> {};
+        Consumer<Integer> consumer = (size) -> {
+        };
         Consumer<Integer> consumer1 = (size) -> DemoLambda3.con(size);
         // 静态方法的引用:只有输入
         Consumer<Integer> consumer2 = DemoLambda3::con;
 
-        Function<String, String> function = (a) -> {return toUpper(a);};
+        Function<String, String> function = (a) -> {
+            return toUpper(a);
+        };
         Function<String, String> function2 = DemoLambda3::toUpper;
+
+        BiFunction<String, String, Integer> biFunction = (a, b) -> {
+            return getLength(a, b);
+        };
+        BiFunction<String, String, Integer> biFunction2 = (a, b) -> getLength(a, b);
+        BiFunction<String, String, Integer> biFunction3 = DemoLambda3::getLength;
+
     }
 }
