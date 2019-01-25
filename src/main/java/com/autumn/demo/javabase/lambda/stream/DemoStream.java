@@ -1,6 +1,7 @@
 package com.autumn.demo.javabase.lambda.stream;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -66,4 +67,13 @@ public class DemoStream {
         IntStream stream = str.chars();
         stream.limit(3).forEach((x)-> System.out.println(x));
     }
+
+
+    public static void test() {
+        // paraller(): 并行流. sequential:
+        Optional<Integer> max = Stream.iterate(1, x->x+1).limit(200).peek(x->{
+            System.out.println("");
+        }).parallel().sequential().max(Integer::compare);
+    }
+
 }
