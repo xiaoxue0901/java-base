@@ -21,5 +21,4 @@ public enum DemoEnum {
     public User getInstance() {
         return instance;
     }
-
 }

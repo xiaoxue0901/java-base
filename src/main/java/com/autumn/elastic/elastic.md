@@ -33,6 +33,39 @@
  ![架构](D:\workspace\github\java-base\src\main\resources\elasticsearch架构.png)
 
 
+---
+
+## 1.3 Elasticsearch的安装及相关插件的介绍
+ 
+ ### 安装准备
+ * 安装JDK, 配置Java环境变量(版本在1.8之上)
+ * 安装Elasticsearch
+ * 启动Elasticsearch
+ * Elasticsearch目录结构
+ 
+ 安装JDK.
+ 1. 将下载的文件放在/opt目录下
+ 2. 检查是否有安装JDK. java -version
+ 3. 已安装但版本不对, 则卸载后安装JDK8版本的.
+ 4. 卸载命令: yum remove java 
+ 5. 未卸载成功则用组的方式卸载: yum groupremove java
+ 6. 解压: tar zxvf jdk-xxx.tar.gz
+ 7. 配置环境变量: vim /etc/profile 配置完毕后重启或者其他方式让配置生效.
+ 
+ 安装elasticsearch
+ 
+ 安装插件
+ * Head
+ * Bigdesk
+ 
+ ## 1.4 倒排索引
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 
 
