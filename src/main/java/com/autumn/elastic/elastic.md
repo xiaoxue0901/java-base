@@ -59,6 +59,50 @@
  * Bigdesk
  
  ## 1.4 倒排索引
+ * 什么是倒排索引?
+ 倒排索引(Inverted index): 也被称为**反向索引**,置入档案或反向档案. 是一种索引方法, 被用来存储在全文搜索下**某个单词**在一个文档或者一组文档中的**存储位置的映射**.是文档检索系统中最常用的数据结构.
+ 
+ 常规的索引建立方式:
+ 文档-->关键词的映射过程(正向索引)
+ 
+ 倒排反向建立索引:
+ 关键词-->文档的映射 把正向索引的结果重新构造成的倒排索引.(反向索引)
+ 
+ 例: 参见倒排索引.png
+ ![倒排索引](../doc/倒排索引.png)
+ 
+ ## 1.5 ElasticSearch API 操作
+  * Mavel插件
+  sense功能: 写AUID代码
+  
+  * 5.1 索引初始化操作
+  创建索引之前可以对索引做初始化操作. 比如指定shards(碎片)数量以及replicas(备份)数量
+  ```$xslt
+CURL-XPUT 'http://192.168.1.10:9200/library/'-d'{
+    "settings":{
+        "index":{
+         # 设置以后不能更改
+        "number_of_shards":5,
+        "number_of_replicas":1
+        }
+    }
+}'
+
+# 上面的number_of_replicas还可以换成:
+blocks.read_only: 设为true, 则当前索引只允许读,不允许写或更新.
+blocks.read: 设为true, 则进制读操作.
+blocks.write: 设为true, 则禁止写操作.
+blocks.metadata: 设为true, 则禁止对metadata操作.
+```
+
+
+
+
+ 
+ 
+ 
+ 
+ 
  
  
  
