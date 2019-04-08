@@ -7,7 +7,9 @@ package com.autumn.springretry.service;
  */
 public interface RetryService {
 
-    String retry();
+    void call(String result) throws NullPointerException;
 
-    String recover(RetryException e);
+    String retry(String b);
+
+    String recover(RetryException e, String b);
 }

@@ -37,7 +37,7 @@ public class Application {
     @PostConstruct
     public void exe() {
         log.info("开始测试");
-        service.retry();
+        service.retry("测试异常处理");
         log.info("结束测试");
     }
 

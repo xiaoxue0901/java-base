@@ -13,5 +13,6 @@ import lombok.Getter;
 public class RetryException extends RuntimeException {
     private String code;
     private String message;
+    private String obj;
 
 }
