@@ -1,4 +1,4 @@
-package com.autumn.springretry.service;
+package com.autumn.springdemo.service_retry;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -14,5 +14,4 @@ public class RetryException extends RuntimeException {
     private String code;
     private String message;
     private String obj;
-
 }

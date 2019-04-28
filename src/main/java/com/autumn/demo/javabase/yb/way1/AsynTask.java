@@ -23,6 +23,7 @@ public class AsynTask {
                     }
                 // 将结果交给接口的实现类取处理
                 myCallBack.callBack(sum);
+                System.out.println("调用回调接口之后");
             }
         });
 

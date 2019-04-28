@@ -12,4 +12,6 @@ public enum Singleton8Enum {
     public void getInstance() {
         System.out.println("用枚举实现单例模式");
     }
+
+    // 复杂实例参见: com.autumn.demo.javabase.base.demoenum.instance.DemoEnum
 }

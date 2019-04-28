@@ -1,10 +1,12 @@
-package com.autumn.springretry.service;
+package com.autumn.springdemo.service_retry;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,12 +15,13 @@ import org.springframework.stereotype.Service;
  * @description
  */
 @Service
+@EnableRetry // 在application或需要执行重试的类上使用@EnableRetry
 @Slf4j
 public class RetryServiceImpl implements RetryService {
     private int i = 0;
 
     @Override
-    @Retryable(include = {RetryException.class},
+    @Retryable(include = {RetryException.class, NullPointerException.class}, exclude = {IndexOutOfBoundsException.class},
             backoff = @Backoff(delayExpression = "#{${max.delay}}", maxDelay = 1000l, multiplierExpression = "#{${integerFiveBean}}"))
     public void call(String result) throws NullPointerException {
         log.info("============:{}", result);
