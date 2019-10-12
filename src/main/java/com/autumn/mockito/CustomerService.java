@@ -33,4 +33,8 @@ public class CustomerService {
     public void setCustomerDao(CustomerDao customerDao) {
         this.customerDao = customerDao;
     }
+
+    public void register(Customer customer) {
+        System.out.println("注册新用户, 在将新用户保存到数据库之前应该分配一个随机令牌");
+    }
 }

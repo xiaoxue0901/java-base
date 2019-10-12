@@ -5,24 +5,16 @@ package com.autumn.mockito;
  * @date 2019/9/26 20:21
  * @description
  */
-public class CustomerDao {
-    public boolean save(Customer customer) {
-        return false;
-    }
+public interface CustomerDao {
+    public boolean save(Customer customer) ;
 
-    public Customer saveCustomer(Customer customer) {
-        return null;
-    }
+    public Customer saveCustomer(Customer customer) ;
 
-    public boolean exists(String phone) {
-        return false;
-    }
+    public boolean exists(String phone) ;
 
-    public boolean update(Customer customer, String id) {
-        return false;
-    }
+    public boolean update(Customer customer, String id) ;
 
-    public void updateEmail(Customer customer, String id) {
-        System.out.println("更新邮件信息");
-    }
+    public void updateEmail(Customer customer, String id) ;
+
+    public void delete(Customer customer) ;
 }
