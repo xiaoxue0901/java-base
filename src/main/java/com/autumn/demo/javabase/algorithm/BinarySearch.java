@@ -2,6 +2,8 @@ package com.autumn.demo.javabase.algorithm;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.stream.IntStream;
+
 /**
  * @author xql132@zcsmart.com
  * @date 2019/10/16 11:10
@@ -14,6 +16,7 @@ public class BinarySearch {
 
     /**
      * 二分查找(升序)
+     *
      * @param s 给定的升序数组
      * @param x 要查找的元素
      * @return 返回 查找次数
@@ -29,7 +32,7 @@ public class BinarySearch {
         // 前提 low<=high
         while (low <= high) {
             // 不能用count=+1
-            count +=1;
+            count += 1;
             // 中间元素位置
             int middle = (low + high) / 2;
             log.debug("下界: {},上界: {}, 中间位置:{}, 中间元素:{}", low, high, middle, s[middle]);
@@ -53,6 +56,7 @@ public class BinarySearch {
 
     /**
      * 二分查找(降序)
+     *
      * @param s 给定的升序数组
      * @param x 要查找的元素
      * @return 返回 查找次数
@@ -68,7 +72,7 @@ public class BinarySearch {
         // 前提 low<=high
         while (low <= high) {
             // 不能用count=+1
-            count +=1;
+            count += 1;
             // 中间元素位置
             int middle = (low + high) / 2;
             log.debug("下界: {},上界: {}, 中间位置:{}, 中间元素:{}", low, high, middle, s[middle]);
@@ -88,6 +92,48 @@ public class BinarySearch {
             }
         }
         return count;
+    }
+
+    private static int pick = 3;
+    public static void main(String[] args) {
+        int result = new BinarySearch().guessNumber(3);
+        // System.out.println("猜数字:" + 2126753390*2);
+        System.out.println("猜数字:" + result);
+    }
+
+    public int guessNumber(int n) {
+        // flag=0, 说明pick=mid, 结束
+        int low = 1;
+        int high = n;
+        while (low < high) {
+            // 如果使用low+high/2取平均值会溢出
+            int mid = high/2+low/2;
+            // 比较大小
+            int flag = guess(mid);
+            if (flag == -1) {
+                // 左边数组, 最大边界
+                high = mid - 1;
+            } else if (flag == 1) {
+                // 右边位置, 最小边界
+                low = mid + 1;
+            } else {
+                return mid;
+            }
+        }
+        return low;
+    }
+
+    /**
+     * 获取猜测结果
+     */
+    private int guess(int gusNumber) {
+        if (pick < gusNumber) {
+            return -1;
+        } else if (pick > gusNumber) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
 }
