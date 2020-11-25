@@ -1,4 +1,4 @@
-package com.autumn.demo.javabase.excel;
+package com.autumn.excel.bean;
 
 import lombok.Data;
 
@@ -9,8 +9,24 @@ import lombok.Data;
  */
 @Data
 public class ExcelDataVO {
+    /**
+     * 接口名称
+     */
     private String name;
+    /**
+     * groupId
+     */
     private String groupId;
+    /**
+     * 老url
+     */
     private String oldUrl;
+    /**
+     * 新url
+     */
     private String newUrl;
+    /**
+     * 调用流程
+     */
+    private String process;
 }
