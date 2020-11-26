@@ -1,10 +1,10 @@
-package com.autumn.excel;
+package com.autumn.demo.excel;
 
 
-import com.autumn.excel.bean.CompareExcel;
-import com.autumn.excel.bean.ExcelDataVO;
-import com.autumn.excel.bean.ExcelUtil;
-import com.autumn.excel.bean.ReadExcel;
+import com.autumn.demo.excel.util.CompareExcel;
+import com.autumn.demo.excel.bean.ExcelDataVO;
+import com.autumn.demo.excel.util.ExcelUtil;
+import com.autumn.demo.excel.util.ReadExcel;
 import com.autumn.file.Modify;
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,14 +24,12 @@ public class ZcsUrlUtil {
 
     /**
      * 读取文档的注释和url
-     * @param controllerPath
-     * @param targetPath
-     * @param excelPath
-     * @param moudleName
+     * @param controllerPath controller注解所在类地址
+     * @param targetPath controller注解所在类编译后地址
      * @param groupId
      * @return
      */
-    public static List<ExcelDataVO> readOldUrl(String controllerPath, String targetPath, String excelPath, String moudleName, String groupId) {
+    public static List<ExcelDataVO> readOldUrl(String controllerPath, String targetPath, String groupId) {
         // 读取某个包下的controller文件
         File file = new File(controllerPath);
         List<String> fileNames = new ArrayList<>();
@@ -62,7 +60,7 @@ public class ZcsUrlUtil {
      * @param groupId
      */
     public static void readAndWriteNewExcel(String controllerPath, String targetPath, String excelPath, String moudleName, String groupId) {
-        List<ExcelDataVO> total = readOldUrl(controllerPath, targetPath, excelPath, moudleName, groupId);
+        List<ExcelDataVO> total = readOldUrl(controllerPath, targetPath, groupId);
         ExcelUtil.write(total, excelPath, moudleName, true);
         log.info("老url读取到excel表完毕");
 
@@ -77,7 +75,7 @@ public class ZcsUrlUtil {
      * @param groupId
      */
     public static void readAndWriteOldExcel(String controllerPath, String targetPath, String excelPath, String moudleName, String groupId) {
-        List<ExcelDataVO> total = readOldUrl(controllerPath, targetPath, excelPath, moudleName, groupId);
+        List<ExcelDataVO> total = readOldUrl(controllerPath, targetPath, groupId);
         ExcelUtil.write(total, excelPath, moudleName, false);
         log.info("老url读取到excel表完毕");
     }

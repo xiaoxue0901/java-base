@@ -1,4 +1,4 @@
-package com.autumn.excel.bean;
+package com.autumn.demo.excel.bean;
 
 import lombok.Data;
 

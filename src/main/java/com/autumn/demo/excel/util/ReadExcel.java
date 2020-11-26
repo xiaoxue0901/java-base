@@ -1,5 +1,7 @@
-package com.autumn.excel.bean;
+package com.autumn.demo.excel.util;
 
+import com.autumn.demo.excel.bean.ExcelDataVO;
+import com.autumn.demo.excel.constant.ExcelConst;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -24,8 +26,48 @@ import java.util.List;
 @Slf4j
 public class ReadExcel {
 
-    private static final String XLS = "xls";
-    private static final String XLSX = "xlsx";
+    /**
+     * 入口:读取Excel文件内容
+     *
+     * @param fileName  要读取的Excel文件所在路径(文件全路径)
+     * @param sheetName 工作薄名称: 例如:Sheet1
+     * @return
+     */
+    public static List<ExcelDataVO> readExcel(String fileName, String sheetName) {
+        Workbook workbook = null;
+        FileInputStream inputStream = null;
+        try {
+            // 获取Excel后缀名
+            String fileType = fileName.substring(fileName.lastIndexOf(".") + 1);
+            // 获取Excel文件
+            File excelFile = new File(fileName);
+            if (!excelFile.exists()) {
+                log.info("指定的Excel文件不存在！");
+                return null;
+            }
+
+            // 获取Excel工作簿的文件流
+            inputStream = new FileInputStream(excelFile);
+            // 根据文件后缀名类型获取对应的工作簿对象
+            workbook = getWorkbook(inputStream, fileType);
+            // 读取excel中的数据
+            return parseExcel(workbook, sheetName);
+        } catch (Exception e) {
+            log.error("解析Excel失败, 文件名:{}, 错误信息:", fileName, e);
+            return null;
+        } finally {
+            try {
+                if (null != workbook) {
+                    workbook.close();
+                }
+                if (null != inputStream) {
+                    inputStream.close();
+                }
+            } catch (Exception e) {
+                log.error("关闭数据流出错！错误信息：", e);
+            }
+        }
+    }
 
     /**
      * 根据文件后缀名类型获取对应的工作簿对象
@@ -37,61 +79,14 @@ public class ReadExcel {
      */
     public static Workbook getWorkbook(InputStream inputStream, String fileType) throws IOException {
         Workbook workbook = null;
-        if (fileType.equalsIgnoreCase(XLS)) {
+        if (fileType.equalsIgnoreCase(ExcelConst.XLS)) {
             workbook = new HSSFWorkbook(inputStream);
-        } else if (fileType.equalsIgnoreCase(XLSX)) {
+        } else if (fileType.equalsIgnoreCase(ExcelConst.XLSX)) {
             workbook = new XSSFWorkbook(inputStream);
         }
         return workbook;
     }
 
-    /**
-     * 读取Excel文件内容
-     *
-     * @param fileName 要读取的Excel文件所在路径
-     * @return 读取结果列表，读取失败时返回null
-     */
-    public static List<ExcelDataVO> readExcel(String fileName, String sheetName) {
-
-        Workbook workbook = null;
-        FileInputStream inputStream = null;
-
-        try {
-            // 获取Excel后缀名
-            String fileType = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length());
-            // 获取Excel文件
-            File excelFile = new File(fileName);
-            if (!excelFile.exists()) {
-                log.info("指定的Excel文件不存在！");
-                return null;
-            }
-
-            // 获取Excel工作簿
-            inputStream = new FileInputStream(excelFile);
-            workbook = getWorkbook(inputStream, fileType);
-
-
-            // 读取excel中的数据
-            List<ExcelDataVO> resultDataList = parseExcel(workbook, sheetName);
-
-            return resultDataList;
-        } catch (Exception e) {
-            log.info("解析Excel失败，文件名：" + fileName + " 错误信息：" + e.getMessage());
-            return null;
-        } finally {
-            try {
-                if (null != workbook) {
-                    workbook.close();
-                }
-                if (null != inputStream) {
-                    inputStream.close();
-                }
-            } catch (Exception e) {
-                log.info("关闭数据流出错！错误信息：" + e.getMessage());
-                return null;
-            }
-        }
-    }
 
     /**
      * 解析Excel数据
@@ -101,9 +96,11 @@ public class ReadExcel {
      */
     private static List<ExcelDataVO> parseExcel(Workbook workbook, String sheetName) {
         List<ExcelDataVO> resultDataList = new ArrayList<>();
-        // 解析sheet
-//        for (int sheetNum = 0; sheetNum < workbook.getNumberOfSheets(); sheetNum++) {}
-//            Sheet sheet = workbook.getSheetAt(sheetNum);
+        // 按顺序解析sheet
+//        for (int sheetNum = 0; sheetNum < workbook.getNumberOfSheets(); sheetNum++) {
+//         Sheet sheet = workbook.getSheetAt(sheetNum);
+//        }
+        // 按sheet名称解析
         Sheet sheet = workbook.getSheet(sheetName);
         // 校验sheet是否合法
         if (sheet == null) {
@@ -111,7 +108,7 @@ public class ReadExcel {
             return null;
         }
 
-        // 获取第一行数据
+        // 获取第一行数据:第一行认为是表头
         int firstRowNum = sheet.getFirstRowNum();
         Row firstRow = sheet.getRow(firstRowNum);
         if (null == firstRow) {
@@ -120,14 +117,14 @@ public class ReadExcel {
 
         // 解析每一行的数据，构造数据对象
         int rowStart = firstRowNum + 1;
+        // 结束行
         int rowEnd = sheet.getPhysicalNumberOfRows();
         for (int rowNum = rowStart; rowNum < rowEnd; rowNum++) {
             Row row = sheet.getRow(rowNum);
-
             if (null == row) {
                 continue;
             }
-
+            // 此处可改为根据不同的表格内容定义不同的对象.
             ExcelDataVO resultData = convertRowToData(row);
             if (null == resultData) {
                 log.info("第 " + row.getRowNum() + "行数据不合法，已忽略！");
@@ -135,7 +132,6 @@ public class ReadExcel {
             }
             resultDataList.add(resultData);
         }
-
         return resultDataList;
     }
 
@@ -151,26 +147,32 @@ public class ReadExcel {
         }
         String returnValue = null;
         switch (cell.getCellType()) {
-            case NUMERIC:   //数字
+            case NUMERIC:
+                //数字
                 Double doubleValue = cell.getNumericCellValue();
 
                 // 格式化科学计数法，取一位整数
                 DecimalFormat df = new DecimalFormat("0");
                 returnValue = df.format(doubleValue);
                 break;
-            case STRING:    //字符串
+            case STRING:
+                //字符串
                 returnValue = cell.getStringCellValue();
                 break;
-            case BOOLEAN:   //布尔
+            case BOOLEAN:
+                //布尔
                 Boolean booleanValue = cell.getBooleanCellValue();
                 returnValue = booleanValue.toString();
                 break;
-            case BLANK:     // 空值
+            case BLANK:
+                // 空值
                 break;
-            case FORMULA:   // 公式
+            case FORMULA:
+                // 公式
                 returnValue = cell.getCellFormula();
                 break;
-            case ERROR:     // 故障
+            case ERROR:
+                // 故障
                 break;
             default:
                 break;

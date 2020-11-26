@@ -1,5 +1,6 @@
-package com.autumn.excel.bean;
+package com.autumn.demo.excel.util;
 
+import com.autumn.demo.excel.bean.ExcelDataVO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Workbook;
 
@@ -17,7 +18,7 @@ import java.util.List;
 public class ExcelUtil {
 
     /**
-     * 读取接口文件
+     * 将数据写入工作薄, 并生成表格文件到指定地址absFileName
      * @param data
      * @param absFileName
      */

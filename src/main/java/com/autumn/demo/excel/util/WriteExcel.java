@@ -1,5 +1,6 @@
-package com.autumn.excel.bean;
+package com.autumn.demo.excel.util;
 
+import com.autumn.demo.excel.bean.ExcelDataVO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
@@ -18,7 +19,10 @@ import java.util.List;
  */
 @Slf4j
 public class WriteExcel {
-    private static List<String> CELL_HEADS; //列头
+    /**
+     * 列头
+     */
+    private static List<String> CELL_HEADS;
 
     static {
         // 类装载时就载入指定好的列头信息，如有需要，可以考虑做成动态生成的列头
@@ -32,6 +36,7 @@ public class WriteExcel {
 
 
     /**
+     * 入口
      * 生成Excel并写入数据信息
      *
      * @param dataList 数据列表
@@ -47,7 +52,6 @@ public class WriteExcel {
             sheet = buildDataSheet(workbook, sheetName, false);
         } else {
             // 如果每次在工作簿后面新建表
-
             try {
                 workbook = new XSSFWorkbook(new FileInputStream(new File(fileName)));
             } catch (Exception e) {
@@ -62,7 +66,6 @@ public class WriteExcel {
         //Workbook workbook = new HSSFWorkbook();
 
         // 生成Sheet表，写入第一行的列头
-
         //构建每行的数据内容
         int rowNum = 1;
         for (Iterator<ExcelDataVO> it = dataList.iterator(); it.hasNext(); ) {
@@ -83,7 +86,7 @@ public class WriteExcel {
      * @param workbook 工作簿对象
      * @return 已经写入列头的Sheet
      */
-    private static Sheet buildDataSheet(Workbook workbook, String sheetName,  boolean flag) {
+    private static Sheet buildDataSheet(Workbook workbook, String sheetName, boolean flag) {
         // 获取已有的表格数量
         int number = workbook.getNumberOfSheets();
         Sheet sheet = workbook.createSheet(sheetName);
@@ -144,6 +147,14 @@ public class WriteExcel {
     }
 
 
+    /**
+     * 设置格式
+     * @param workbook
+     * @param fontName
+     * @param size
+     * @param color
+     * @return
+     */
     private static CellStyle buildBodyCellStyle(Workbook workbook, String fontName, int size, short color) {
         CellStyle style = workbook.createCellStyle();
         //对齐方式设置
@@ -155,9 +166,7 @@ public class WriteExcel {
         font.setFontHeightInPoints((short) size);
         // 设置颜色
         font.setColor(color);
-//        font.setBold(true);
         style.setFont(font);
-
         return style;
     }
 
@@ -189,11 +198,11 @@ public class WriteExcel {
         cell.setCellStyle(buildBodyCellStyle(workbook, "Times new Roman", 14, IndexedColors.GREEN.getIndex()));
         // 新url: 此处存放的是新的url
         cell = row.createCell(cellNum++);
-//        cell.setCellValue(getNewUrl(data.getOldUrl()));
-        cell.setCellValue(data.getNewUrl());
+        // 此处可以对数据做转换
+        cell.setCellValue(getNewUrl(data.getOldUrl()));
         cell.setCellStyle(buildBodyCellStyle(workbook, "Times new Roman", 14, IndexedColors.BLACK.getIndex()));
         // 流程:
-        cell = row.createCell(cellNum++);
+        cell = row.createCell(cellNum);
         cell.setCellValue(data.getProcess());
         cell.setCellStyle(buildBodyCellStyle(workbook, "Times new Roman", 14, IndexedColors.BLACK.getIndex()));
 
