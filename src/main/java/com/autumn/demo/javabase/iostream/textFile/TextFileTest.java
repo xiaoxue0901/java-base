@@ -35,4 +35,8 @@ public class TextFileTest {
     }
 
 
+    public static void main(String[] args) {
+        String a = "1.00";
+        System.out.println(Double.parseDouble(a));
+    }
 }

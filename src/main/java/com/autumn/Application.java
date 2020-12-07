@@ -6,7 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
 
@@ -16,7 +18,7 @@ import javax.annotation.PostConstruct;
  * @description
  */
 @SpringBootApplication
-@EnableAsync //在application或需要执行重试的类上使用@EnableAsync
+// @EnableAsync //在application或需要执行重试的类上使用@EnableAsync
 @Slf4j
 public class Application {
     @Autowired
@@ -49,6 +51,11 @@ public class Application {
         log.info("主线程结束");
     }
 
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 
 }
 
