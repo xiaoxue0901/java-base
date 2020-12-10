@@ -34,7 +34,7 @@ public class HttpUtilTest {
 
     @Test
     public void getWxSignature() {
-        httpUtil.getWxSignature("http://xihiia.natappfree.cc/wxsdk/demo.html", "wx7086d3fb459dbb09", "fe14a5b4857e583b443917eba3fc8d4e");
+        httpUtil.getWxSignature("https://mallwebapp.zcsweb.vpos.xin/demo.html", "wxf71ffb21c797705b", "c1a793c80eccc53ff4c5188dfa702d47");
     }
 
     @Test
