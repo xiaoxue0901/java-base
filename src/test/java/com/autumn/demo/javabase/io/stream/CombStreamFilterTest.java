@@ -1,9 +1,7 @@
-package com.autumn.demo.javabase.iostream.chapter1;
+package com.autumn.demo.javabase.io.stream;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * @author xql132@zcsmart.com
