@@ -1,23 +1,20 @@
 package com.autumn.springdemo.restTemplate.core;
 
 import com.alibaba.fastjson.JSON;
+import com.autumn.springdemo.restTemplate.wx.AccessToken;
 import com.autumn.springdemo.restTemplate.wx.WxResp;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.poi.ss.formula.functions.T;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import sun.security.provider.SHA;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 /**
@@ -49,7 +46,7 @@ public class HttpUtil {
         request.put("appId", appId);
         request.put("appSecret", appSecret);
         AccessToken resp = doGet(url, AccessToken.class, request);
-        return resp.getAccess_token();
+        return resp.getAccessToken();
     }
 
 
@@ -73,7 +70,10 @@ public class HttpUtil {
         return getJsApiConfig(url, appId, ticket);
     }
     public <T> T doGet(String url, Class<T> responseClazz, Map<String, String> map) {
-        T resp = restTemplate.getForObject(url, responseClazz, map);
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class, map);
+        log.info("原始响应报文:{}, header:{}, code:{}", responseEntity, responseEntity.getHeaders(), responseEntity.getStatusCode());
+        log.info("原始响应报文:{}", responseEntity.getBody());
+        T resp = JSON.parseObject(responseEntity.getBody(), responseClazz);
         logger.info("请求url:{}, 响应报文:{}", url, JSON.toJSONString(resp));
         return resp;
     }

@@ -1,5 +1,6 @@
 package com.autumn.springdemo.restTemplate.wx;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,9 +12,9 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-public class WxResp {
-    String errcode;
-    String errmsg;
+@EqualsAndHashCode(callSuper = true)
+public class WxResp extends WxError {
+
     String ticket;
-    String expiresIn;
+    int expiresIn;
 }
