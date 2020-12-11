@@ -10,10 +10,11 @@ import java.util.zip.ZipInputStream;
  * @author xql132@zcsmart.com
  * @date 2020/12/11
  * @time 13:12
- * @description
+ * @description 组合流过滤器:这种混合并 匹配过滤器类以构建真正有用的流序列的能力，将带来极大的灵活性
+ * 简单介绍各种流的构造方式
  */
 @Slf4j
-public class Stream {
+public class CombinedStreamFilter {
     // 1.流:
     // 输入流:InputStream
     // 输出流: OutputStream
@@ -26,15 +27,6 @@ public class Stream {
         String userDir = System.getProperty("user.dir");
         return userDir;
     }
-}
-
-/**
- * 组合流过滤器
- * 这种混合并 匹配过滤器类以构建真正有用的流序列的能力，将带来极大的灵活性，
- */
-@Slf4j
-class CombinedStreamFilter {
-
     /**
      * 1.通过文件名构造FileInputStream对象
      *
@@ -188,4 +180,7 @@ class CombinedStreamFilter {
         }
         return pis;
     }
+
 }
+
+
