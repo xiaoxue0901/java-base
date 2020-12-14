@@ -2,6 +2,8 @@ package com.autumn.demo.javabase.io.stream;
 
 import org.junit.Test;
 
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 /**
@@ -27,5 +29,14 @@ public class TextStreamTest {
     @Test
     public void constructPrint() {
         TextStream.constructPrint();
+    }
+
+    @Test
+    public void userPrintWriter() {
+        try {
+            TextStream.userPrintWriter();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

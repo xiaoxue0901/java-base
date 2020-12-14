@@ -14,4 +14,13 @@ public class Employee {
     private String name;
     private double salary;
     private Date hireDay;
+
+    public Employee() {
+    }
+
+    public Employee(String name, double salary, Date hireDay) {
+        this.name = name;
+        this.salary = salary;
+        this.hireDay = hireDay;
+    }
 }
