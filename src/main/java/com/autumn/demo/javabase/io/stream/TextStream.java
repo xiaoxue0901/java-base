@@ -5,6 +5,7 @@ import com.autumn.demo.javabase.constant.BaseConsts;
 import com.autumn.demo.javabase.designpattern.demo02_adapter.Adapter.Sample1.Print;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 /**
@@ -132,6 +133,22 @@ public class TextStream {
         InputStreamReader isr2 = new InputStreamReader(new FileInputStream(ABS_FILE), "ISO8859_5");
         return isr2;
     }
+
+    /**
+     * 如何读入文本输入: BufferedReader
+     * @throws IOException
+     */
+    public static void userBufferReader() throws IOException {
+        // 构造对象
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(ABS_FILE), StandardCharsets.UTF_8));
+        // 方法使用
+        String line = null;
+        // readLine 方法在没有输入时返回 null
+        while ((line =bufferedReader.readLine()) != null) {
+            System.out.println("打印内容:"+line);
+        }
+    }
+
 
 
 
