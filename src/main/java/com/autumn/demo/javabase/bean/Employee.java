@@ -2,6 +2,7 @@ package com.autumn.demo.javabase.bean;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Date;
  * @description
  */
 @Data
-public class Employee {
+public class Employee implements Serializable {
     private String name;
     private double salary;
     private Date hireDay;
