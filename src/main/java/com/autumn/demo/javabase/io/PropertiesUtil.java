@@ -1,4 +1,4 @@
-package com.autumn.demo.javabase.iostream;
+package com.autumn.demo.javabase.io;
 
 import java.io.File;
 import java.io.FileInputStream;

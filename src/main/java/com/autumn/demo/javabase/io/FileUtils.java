@@ -1,8 +1,9 @@
-package com.autumn.demo.javabase.iostream;
+package com.autumn.demo.javabase.io;
 
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -11,6 +12,16 @@ import java.util.List;
  * @description
  */
 public class FileUtils {
+
+    public static void readFileName(String dir) {
+        File file = new File(dir);
+        String[] fileNames = file.list();
+        Arrays.stream(fileNames).forEach(System.out::println);
+    }
+
+    // public static void main(String[] args) {
+    //     readFileName("C:\\Users\\xql\\Desktop\\20200528交换多流程改造");
+    // }
 
     /**
      * 递归的方式读取文件

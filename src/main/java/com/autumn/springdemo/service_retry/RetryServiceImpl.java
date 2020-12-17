@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  * @description
  */
 @Service
-@EnableRetry // 在application或需要执行重试的类上使用@EnableRetry
+// @EnableRetry // 在application或需要执行重试的类上使用@EnableRetry
 @Slf4j
 public class RetryServiceImpl implements RetryService {
     private int i = 0;

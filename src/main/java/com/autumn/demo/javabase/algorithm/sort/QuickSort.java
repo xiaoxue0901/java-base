@@ -36,6 +36,7 @@ public class QuickSort {
      * 情形1. 3个值不等, 假设a>b>c, 则(b-a)*(b-c)<0; 假设b>a>c, 则(a-b)*(a-c)<0; 假设a>c>b或b>c>a, 则 (c-a)*(c-b)<0;
      * 情形2. 2个值相等, 则(b-a)*(b-c)==0,无论a=b还是c=b, b一定是等值的其中一个.
      * 情形3. 3个值相等. 则任意值都可以.
+     *
      * @param a
      * @param b
      * @param c
@@ -46,9 +47,9 @@ public class QuickSort {
 //        else if ((a - b) * (b - c) >= 0) { return b; }
 //        else { return c; }
 
-        if ((a-b)*(a-c)<=0) {
+        if ((a - b) * (a - c) <= 0) {
             return a;
-        } else if ((b-a)*(b-c)<=0) {
+        } else if ((b - a) * (b - c) <= 0) {
             return b;
         } else {
             return c;
@@ -58,6 +59,7 @@ public class QuickSort {
 
     /**
      * 快速排序
+     *
      * @param seq
      */
     public void quickSort1(int[] seq) {
@@ -67,33 +69,16 @@ public class QuickSort {
         int j = seq.length - 1;
         int s = seq[0];
         // 从右向左, 找比基准小的数据, 找到后与基准交换位置
-        for (;j>0; j--) {
-            while (seq[j]< key) {
-
-
+        for (; j > 0; j--) {
+            while (seq[j] < key) {
+//                SortUtil.swap(seq, i,j);
             }
-
-
         }
-
-
-
     }
 
-    /**
-     * 值交换
-     * @param data
-     * @param i
-     * @param j
-     */
-    public void swap(int[] data, int i, int j) {
-        int temp = data[i];
-        data[i] = data[j];
-        data[j] = temp;
-    }
 
     public static void main(String[] args) {
-        int[] seq = {1,9,10,3,8,7,6,2,4};
+        int[] seq = {1, 9, 10, 3, 8, 7, 6, 2, 4};
         QuickSort quickSort = new QuickSort();
         int pivot = quickSort.getPovit(seq);
         log.info("基准值为:{}", pivot);

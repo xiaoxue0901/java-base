@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
@@ -42,8 +43,16 @@ public class DateUtils {
 
     }
 
+    public static String getnow() {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        return localDateTime.format(DateTimeFormatter.ofPattern("yyyyMMddHH"));
+    }
+
     public static void main(String[] args) {
-        oldDate();
-        newDate();
+//        oldDate();
+//        newDate();
+        log.info("日期:{}", new Date());
+        log.info("日期2:{}", LocalDateTime.now());
+        log.info("时间:{}", getnow());
     }
 }
