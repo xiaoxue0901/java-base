@@ -94,6 +94,7 @@ public class HttpUtil {
         Map<String, String> sortParams = sortAsc(params);
         //1.2 使用URL键值对的格式拼接成字符串
         String str = mapJoin(sortParams, false);
+        logger.info("str:{}", str);
         //使用这个方法
         String signature = DigestUtils.sha1Hex(str.getBytes(StandardCharsets.UTF_8));
 

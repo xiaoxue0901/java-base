@@ -36,7 +36,12 @@ public class HttpUtilTest {
 
     @Test
     public void getWxSignature() {
-        httpUtil.getWxSignature("https://mallwebapp.zcsweb.vpos.xin/demo.html", "wxf71ffb21c797705b", "c1a793c80eccc53ff4c5188dfa702d47");
+        httpUtil.getWxSignature("https://mallwebapp.zcsweb.vpos.xin/good.html?id=94&cirMemberId=1034&proLink=ZM1a2e52z6", "wxf71ffb21c797705b", "c1a793c80eccc53ff4c5188dfa702d47");
+    }
+
+    @Test
+    public void getJsApiConfig() {
+        httpUtil.getJsApiConfig("https://mallwebapp.zcsweb.vpos.xin/good.html?id=94&cirMemberId=1034&proLink=ZM1a2e52z6", "wxf71ffb21c797705b", "bxLdikRXVbTPdHSM05e5u-rRXcHw0K0s02cUEznpRg2YLdWME_8UT-2pWpBBrCqvcaxHJV_tql1JLp2QzpahVw");
     }
 
     @Test
