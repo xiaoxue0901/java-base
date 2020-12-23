@@ -19,9 +19,6 @@ public class FileUtils {
         Arrays.stream(fileNames).forEach(System.out::println);
     }
 
-    // public static void main(String[] args) {
-    //     readFileName("C:\\Users\\xql\\Desktop\\20200528交换多流程改造");
-    // }
 
     /**
      * 递归的方式读取文件
