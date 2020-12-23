@@ -5,7 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -103,6 +105,34 @@ public class FileUtils {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Files: 复制, 移动, 删除操作
+     *
+     * @throws IOException
+     */
+    public static void baseFileOps(String sourcePath) throws IOException {
+        Path source = Paths.get(sourcePath);
+        Path target = Paths.get("/home");
+        // 将文件从一个位置复制到另一个位置
+        Files.copy(source, target);
+        // 移动文件（即复制并删除原文件）可以调用
+        Files.move(source, target);
+        // 如果目标路径已经存在，那么复制或移动将失败。如果想要覆盖已有的目标路径， 可以使用 REPLACE_EXISTING 选项。如果想要复制所有的文件属性，可以使用 COPY_ATTRIBUTES 选项。
+        Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
+        // 可以将移动操作定义为原子性的，这样就可以保证要么移动操作成功完成，要么源文 件继续保持在原来位置。
+        Files.move(source, target, StandardCopyOption.ATOMIC_MOVE);
+        // 删除文件
+        Files.delete(source);
+        // 要删除的文件不存在，delete()就会抛出异常, 使用deleteIfExists(), 此方法还可以移除空目录
+        boolean deleted = Files.deleteIfExists(source);
+        // 重命名
+        File oldFile = new File(sourcePath);
+        File newFile = Files.createFile(target).toFile();
+        boolean result = oldFile.renameTo(newFile);
+        log.info("更名结果:{}", result);
+    }
+
     /**
      * 递归的方式读取文件
      *
