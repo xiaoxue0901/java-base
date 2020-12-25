@@ -58,9 +58,5 @@ public class PathDemo {
     }
 
 
-    public static void main(String[] args) {
-        usePath();
-    }
-
 
 }
