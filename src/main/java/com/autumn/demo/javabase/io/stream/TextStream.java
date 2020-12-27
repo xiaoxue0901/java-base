@@ -2,7 +2,6 @@ package com.autumn.demo.javabase.io.stream;
 
 import com.autumn.demo.javabase.bean.Employee;
 import com.autumn.demo.javabase.constant.BaseConsts;
-import com.autumn.demo.javabase.designpattern.demo02_adapter.Adapter.Sample1.Print;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;

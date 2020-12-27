@@ -7,7 +7,6 @@ package com.autumn.demo.javabase.util;
  */
 public class StringUtil {
     public static String getStr(String date) {
-//        String newD = date.replaceAll("[[\\s-:punct:]]","");
         String newD = date.replaceAll("[[\\s-:punct:]]","");
         System.out.println("去除后的字符串为:{}"+newD + " ,长度为:" + newD.length());
         return newD;
