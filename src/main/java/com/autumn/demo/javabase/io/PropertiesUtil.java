@@ -21,7 +21,6 @@ public class PropertiesUtil {
     public  static Properties getProperties(String propPath){
            Properties props = new Properties();
         try {
-//            logger.info("begin to load properties file");
             File file = new File(propPath);
             if(!file.exists()) {
                 throw new FileNotFoundException("prop file not found !");

@@ -56,11 +56,4 @@ public class PathDemo {
         // 创建一个Path对象
         Path path = file.toPath();
     }
-
-
-    public static void main(String[] args) {
-        usePath();
-    }
-
-
 }
