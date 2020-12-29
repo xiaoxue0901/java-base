@@ -1,4 +1,4 @@
-package com.autumn.demo.javabase.enumerate.instance;
+package com.autumn.demo.javabase.enumerate.base;
 
 import com.autumn.demo.javabase.bean.User;
 
@@ -26,7 +26,7 @@ public enum ObjectEnum {
     private User user;
 
     ObjectEnum() {
-        this.user = new User();
+        this.user = getUser();
     }
 
     public abstract User getUser();

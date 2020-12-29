@@ -84,6 +84,12 @@ public enum RainBow2Enum implements Color {
 总结2点:
     1. 枚举类反编译后是static final 修饰的, jdk的类加载器会保证唯一性
     2. 避免了反射和序列化的问题.
+    3. 心得-定义 User类可以用new User();获取很多不同的实例对象. 枚举是列举出有穷序列集.
+    4. 定义枚举类, 里面只列举出一个值, 此值代表一个User类的实例. 通过getInstance()方法可以获取到INSTANCE的值: 一个User类的实例.
+    5. Enum: 自由序列化, 线程安全, 保证单例
+    6. Enum是由class实现的->enum作为一个类来实现单例;
+    7. Enum是通过继承Enum类实现的, enum不能作为子类继承其他类.也不能被继承, 是final修饰的. 但是可以用来实现接口
+    8. Enum有且仅有private的构造器. 防止外部的额外构造.
 
 ```java
 public enum SingletonEnum {
