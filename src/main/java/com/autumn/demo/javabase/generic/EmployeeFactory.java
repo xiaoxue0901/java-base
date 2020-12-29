@@ -25,4 +25,27 @@ public class EmployeeFactory implements BeanFactory<Employee>  {
         }
         return null;
     }
+
+
+    /**
+     * 定义泛型方法
+     * @param u
+     * @param <U>
+     * @return
+     */
+    private <U> U getResult(U u) {
+        return u;
+    }
+
+    /**
+     * 定义泛型方法.
+     * @param k
+     * @param v
+     * @param <K>
+     * @param <V>
+     * @return
+     */
+    private <K, V> V getValue(K k, V v) {
+        return v;
+    }
 }
