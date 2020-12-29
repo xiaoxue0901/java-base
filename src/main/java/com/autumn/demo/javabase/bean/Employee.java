@@ -10,7 +10,7 @@ import java.util.Date;
  * @date 2019/7/16 21:16
  * @description
  */
-@Data
+
 public class Employee implements Serializable {
     private String name;
     private double salary;
@@ -22,6 +22,30 @@ public class Employee implements Serializable {
     public Employee(String name, double salary, Date hireDay) {
         this.name = name;
         this.salary = salary;
+        this.hireDay = hireDay;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public Date getHireDay() {
+        return hireDay;
+    }
+
+    public void setHireDay(Date hireDay) {
         this.hireDay = hireDay;
     }
 }
