@@ -1,4 +1,4 @@
-package com.autumn.demo.javabase.yb.way1;
+package com.autumn.demo.javabase.inter.callback;
 
 /**
  * @author xql132@zcsmart.com

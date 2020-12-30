@@ -18,4 +18,8 @@ public class UseConstructorTest {
         UseConstructor.useConstructor(Employee.class);
     }
 
+    @Test
+    public void constructEmployee() {
+        UseConstructor.constructEmployee(Employee.class);
+    }
 }

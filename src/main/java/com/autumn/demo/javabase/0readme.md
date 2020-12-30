@@ -120,4 +120,39 @@ public enum SingletonEnum {
 ```
 
 ## reflection: 反射
+`Class, Field, Method,Constructor,Modifier, Array的用法`
 
+## object
+1. equals(): 步骤如下
+ ```java
+@Override
+     public boolean equals(Object o) {
+         // 1. 比较两个对象的存储地址.this就是this.hashCode()的值.
+         if (this == o) return true;
+         // 2. o对象非空, 并且要比较的两个对象是同一个类产生的对象
+         if (o == null || getClass() != o.getClass()) return false;
+         // 3. 比较2个对象的每个实例域是否相等.
+         Employee employee = (Employee) o;
+         return Double.compare(employee.salary, salary) == 0 &&
+                 name.equals(employee.name) &&
+                 hireDay.equals(employee.hireDay);
+     }
+ ```
+  
+2. hashCode():Object对象是默认存储地址.
+3. toString(): Object对象默认: 类名+@+hashCode(), 重写toString(): 类名加各个域的命名+域值拼接而来.
+```java
+public String toString() {
+        return getClass().getName() + "@" + Integer.toHexString(hashCode());
+    }
+```
+
+## interface
+`接口不是类, 而是对类的一组需求描述, 这些类要遵从接口描述的统一格式进行定义`
+特点:
+1. 没有实例域. 不能实现方法.
+2. 可以声明接口的变量
+3. 接口可以继承接口, 类可以实现多个接口.
+
+`接口与回调`
+`定义: 回调是一种常见的程序设计模式, 这种模式中, 可以指出某个特定事件发生时应该采取的动作.`
