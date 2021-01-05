@@ -21,6 +21,10 @@ public class Employee implements Serializable {
     public Employee() {
     }
 
+    public Employee(String name) {
+        this.name = name;
+    }
+
     public Employee(String name, double salary) {
         log.info("构造器: this:{}, this.toString():{}", this, this.toString());
         // this指的是Empoyee类产生的实例对象

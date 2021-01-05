@@ -1,86 +1,61 @@
 package com.autumn.demo.javabase.set.queue;
 
-
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
 /**
  * @author xql132@zcsmart.com
- * @date 2021/1/4
- * @time 11:11
- * @description LinkedList: 链表
+ * @date 2021/1/5
+ * @time 14:25
+ * @description LinkedList: 采用链表实现
  */
 @Slf4j
 public class UseLinkedList {
 
-    /**
-     * Iterator的使用
-     */
-    public static void useIterator() {
-        List<String> staff = new LinkedList<>();
-        // LinkedList.add():将对象添加到链表的尾部
-        staff.add("Amy");
-        staff.add("Bob");
-        staff.add("Carl");
-        // iterator(): 获取迭代器Iterator
-        Iterator<String> iterator = staff.iterator();
-        if (iterator.hasNext()) {
-            // 读取第一个元素:Amy
-            String first = iterator.next();
-            // 读取第二个元素:Bob
-            String second = iterator.next();
-            // 读取Carl
-            String third = iterator.next();
-            // 删除Carl: 删除的是上一次调用next()返回的数据
-            iterator.remove();
-            log.info("first:{}, second:{}", first, second);
+    public static void useList() {
+        // List使用
+        List<String> source = new LinkedList<>();
+        source.add("嬴政");
+        source.add("刘邦");
+        List<String> pre = new LinkedList<>();
+        pre.add("尧");
+        pre.add("舜");
+        pre.add("禹");
+        source.addAll(pre);
+        source.add(0, "周文王");
+        ListIterator<String> iter = source.listIterator();
+        while (iter.hasNext()) {
+            // nextIndex(): 下次调用next()将返回的元素的索引.
+            log.info("索引:{}, 值:{}",iter.nextIndex(), iter.next());
         }
-        log.info("staff:{}", JSON.toJSONString(staff));
-    }
+        // 删除"周文王", 并返回要删除的值
+        String name = source.remove(0);
+        // 获取"嬴政"
+        String yinz = source.get(0);
+        // 设置值, 将刘邦换为项羽, 返回刘邦
+        String liub = source.set(1, "项羽");
+        log.info("remove:{}, get:{}, set:{}", name, yinz, liub);
+        // 返回尧在列表中第一次出现的位置.
+        int yaoIndex = source.indexOf("尧");
+        // 返回尧在列表中最后一次出现的位置.
+        int yaoLastIndex = source.lastIndexOf("尧");
+        log.info("index:{}, lastIndex:{}", yaoIndex, yaoLastIndex);
 
-    /**
-     * ListIterator迭代器
-     */
-    public static void useListIterator() {
-        List<String> staff = new LinkedList<>();
-        // LinkedList.add():将对象添加到链表的尾部
-        staff.add("Amy");
-        staff.add("Bob");
-        staff.add("Carl");
-        // listIterator(): 获取迭代器ListIterator
-        ListIterator<String> iterator = staff.listIterator();
-        // iterator.add(): 添加的元素位置依赖于迭代器的位置
-        iterator.add("Juliet0");
-        // skip past first element
-        String first = iterator.next();
-        // 在Amy后面添加Juliet
-        iterator.add("Juliet");
-        iterator.add("Juliet2");
-        // 取出Bob
-        String second = iterator.next();
-        log.info("first:{}, second:{}", first, second);
-        log.info("staff:{}", JSON.toJSONString(staff));
-        // 取出
-        String third = iterator.next();
-        // 用Carl2取代Carl: 用新值取代上一次next()获取的值
-        iterator.set("Carl2");
-        if (!iterator.hasNext()){
-            // 在尾部添加元素
-            iterator.add("last");
-        }
-        log.info("staff2:{}", JSON.toJSONString(staff));
-        // 重新对staff迭代
-        ListIterator<String> iterator2 = staff.listIterator();
-        log.info("first:{}", iterator2.next());
-        if (iterator2.hasPrevious()) {
-            String pre = iterator.previous();
-            log.info("pre:{}", pre);
-        }
-        log.info("staff3:{}", JSON.toJSONString(staff));
+        // LinkedList使用
+        // 构造一个链表, 并将source集合中的元素添加到这个表中
+        LinkedList<String> linkedList = new LinkedList<>(source);
+        // 添加
+        linkedList.addFirst("夏商");
+        linkedList.addLast("清");
+        // 获取
+        log.info("第一个:{}, 最后一个:{}", linkedList.getFirst(), linkedList.getLast());
+        // 删除
+        linkedList.removeFirst();
+        linkedList.removeLast();
+        log.info("linkedList:{}", JSON.toJSONString(linkedList));
     }
 }
