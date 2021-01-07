@@ -3,10 +3,9 @@ package com.autumn.demo.javabase.reflection;
 import com.alibaba.fastjson.JSON;
 import com.autumn.demo.javabase.bean.Employee;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.ss.formula.functions.T;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
+import java.lang.reflect.*;
 import java.util.Date;
 
 /**
@@ -93,5 +92,29 @@ public class UseMethod {
         }
 
 
+    }
+
+    /**
+     * 获取泛型类型
+     * @param tClass
+     * @param <T>
+     */
+    public static <T> void useGenericMethod(Class<T> tClass) {
+        Method[] methods = tClass.getMethods();
+        for (Method method : methods) {
+            log.info("方法名:{}", method.getName());
+            if (method.getName().equals("getResp")) {
+                // 如果method被声明为泛型方法, 则获得泛型类型变量.
+                TypeVariable[] variables = method.getTypeParameters();
+                log.info("TypeVariable:{}", JSON.toJSONString(variables));
+                // 获得这个方法被声明的泛型参数类型
+                Type[] paramTypes = method.getGenericParameterTypes();
+                log.info("Type:{}", JSON.toJSONString(paramTypes));
+                // 获取method方法被声明的泛型返回类型
+                Type type = method.getGenericReturnType();
+                log.info("Type2:{}", JSON.toJSONString(type));
+            }
+
+        }
     }
 }

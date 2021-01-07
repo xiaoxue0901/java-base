@@ -1,4 +1,4 @@
-package com.autumn.demo.javabase.reflect;
+package com.autumn.demo.javabase.annonation;
 
 import lombok.Data;
 

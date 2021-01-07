@@ -4,9 +4,9 @@ import com.autumn.demo.javabase.bean.Employee;
 import com.autumn.demo.javabase.bean.FindUser;
 import com.autumn.demo.javabase.bean.Head;
 import com.autumn.demo.javabase.bean.Manager;
+import com.autumn.demo.javabase.generic.sup.Comparable;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -105,4 +105,14 @@ public class SendUtil {
         empoloyees.add(e);
         empoloyees.add(new Manager("", 1.4, new Date()));
     }
+
+    /**
+     * 使用Class<T>参数进行类型匹配
+     * @param c
+     * @param <T>
+     * @return
+     */
+   public static <T> RespVO<T> useClassT(Class<T> c) {
+        return null;
+   }
 }

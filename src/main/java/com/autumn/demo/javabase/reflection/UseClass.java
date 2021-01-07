@@ -1,7 +1,9 @@
 package com.autumn.demo.javabase.reflection;
 
+import com.alibaba.fastjson.JSON;
 import com.autumn.demo.javabase.bean.Employee;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.ss.formula.functions.T;
 
 import java.lang.reflect.*;
 
@@ -23,6 +25,7 @@ public class UseClass {
     public void getClassInstance() throws ClassNotFoundException {
         // 1. 获取Class实例: instance.getClass()
         Employee employee = new Employee();
+        // 获取对象所属的类
         Class employeeClass = employee.getClass();
         //  根据Class实例获取类名
         String className = employeeClass.getName();
@@ -159,5 +162,44 @@ public class UseClass {
     }
 
 
+    /**
+     * 反射和泛型
+     */
+    public static <T> void genericClass(Class<T> clazz) {
+        try {
+            // 构造实例对象
+            T instance = clazz.newInstance();
+            // 强制转换
+            Object employee = new Employee();
+            // employee为null或者T类型, 转换成功, 否则, 抛出异常
+            T res = clazz.cast(employee);
+            // 返回枚举类型
+            T[] enums = clazz.getEnumConstants();
+            // 获取clazz的超类
+            Class superClazz = clazz.getSuperclass();
+            // 获取有参构造器
+            Constructor<T> employeeConstructor = clazz.getConstructor(String.class, double.class);
+            Constructor<T> declareEmpConstructor = clazz.getDeclaredConstructor(String.class, double.class);
+            // 通过构造器构建实例
+            T empInstance = employeeConstructor.newInstance("llw", 345.33D);
+            // 获取泛型类型变量
+            TypeVariable[] typeVariables = clazz.getTypeParameters();
+            log.info("TypeVariable: {}", JSON.toJSONString(typeVariables));
+            // 获取被声明为这一类型的超类型的泛型类型
+            Type type = clazz.getGenericSuperclass();
+            log.info("Type: {}", JSON.toJSONString(type));
+            Type[] superTypes = clazz.getGenericInterfaces();
+            log.info("superTypes:{}", JSON.toJSONString(superTypes));
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 }

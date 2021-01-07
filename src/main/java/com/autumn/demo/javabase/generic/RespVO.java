@@ -13,4 +13,15 @@ public class RespVO<T> {
     private int code;
     private String message;
     private T data;
+
+    /**
+     * 泛型方法
+     * @param req
+     * @param <V>
+     * @param <R>
+     * @return
+     */
+    public <V, R> R getResp(V req) {
+        return null;
+    }
 }

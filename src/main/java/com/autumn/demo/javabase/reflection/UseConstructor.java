@@ -1,10 +1,13 @@
 package com.autumn.demo.javabase.reflection;
 
 import com.alibaba.fastjson.JSON;
+import com.autumn.demo.javabase.bean.Employee;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
+import java.util.Date;
 
 /**
  * @author xql132@zcsmart.com
@@ -33,5 +36,26 @@ public class UseConstructor {
             log.info("构造器: 修饰符:{}, 名称:{}, 构造器参数:{}, 构造器对应的Class类:{}",
                     modifier, name, JSON.toJSONString(paramTypes), declareClazz.getName());
         }
+    }
+
+    /**
+     * 使用构造器构造有参对象
+     * @param employeeClass
+     */
+    public static void constructEmployee(Class employeeClass) {
+        try {
+          Constructor<Employee> lily =   employeeClass.getConstructor(String.class, double.class, Date.class);
+          Employee employee = lily.newInstance("lily", 5600, new Date());
+          log.info("lily: {}", JSON.toJSONString(employee));
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+
     }
 }

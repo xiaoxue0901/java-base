@@ -1,5 +1,6 @@
 package com.autumn.demo.javabase.reflection;
 
+import com.autumn.demo.javabase.bean.Employee;
 import org.junit.Test;
 
 import java.lang.reflect.Modifier;
@@ -74,5 +75,11 @@ public class UseClassTest {
     @Test
     public void reflectionTest() throws ClassNotFoundException {
 
+    }
+
+    @Test
+    public void genericClass() {
+        Class<Employee> employeeClass = Employee.class;
+        UseClass.genericClass(employeeClass);
     }
 }
