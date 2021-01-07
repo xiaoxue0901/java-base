@@ -23,4 +23,9 @@ public class UseSocketTest {
     public void useInetAddress() {
         UseSocket.useInetAddress();
     }
+
+    @Test
+    public void useServerSocket() {
+        UseSocket.useServerSocket();
+    }
 }

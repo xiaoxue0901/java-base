@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.*;
 import java.util.Scanner;
 
@@ -90,6 +91,40 @@ public class UseSocket {
             e.printStackTrace();
         }
 
+    }
+
+    public static void useServerSocket() {
+        try {
+            // 创建一个监听端口的服务器套接字
+            ServerSocket serverSocket = new ServerSocket(8189);
+            // 等待连接. accept()阻塞当前线程直到建立连接为止, 返回一个
+            Socket socket = serverSocket.accept();
+            // 获取可以从套接字中读取数据的流
+            InputStream in = socket.getInputStream();
+            //获取可以向套接字写出数据的流
+            OutputStream out = socket.getOutputStream();
+
+            //控制台输入
+            Scanner scanner = new Scanner(in);
+            //控制台打印
+            PrintWriter writer = new PrintWriter(out, true);
+            writer.println("Hello! Enter BYE to exit");
+            while (scanner.hasNext()) {
+                String line = scanner.nextLine();
+                writer.println("Echo:"+line);
+                if (line.trim().equals("BYE")){
+                    break;
+                }
+            }
+            socket.close();
+            serverSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        useServerSocket();
     }
 
 }
