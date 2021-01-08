@@ -8,6 +8,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.*;
+import java.nio.channels.Channels;
+import java.nio.channels.SocketChannel;
 import java.util.Scanner;
 
 /**
@@ -123,8 +125,62 @@ public class UseSocket {
         }
     }
 
-    public static void main(String[] args) {
-        useServerSocket();
+    /**
+     * 半关闭: 套接字连接的一端可以终止其输出, 同时仍旧可以接受另一端的数据
+     */
+    public static void halfColse(String host, int port) {
+        // 创建客户端套接字
+        try {
+            Socket socket = new Socket(host, port);
+            Scanner scanner = new Scanner(socket.getInputStream());
+            PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
+            // send request data
+            printWriter.write("eoch");
+            printWriter.flush();
+            // 关闭输出
+            socket.shutdownOutput();
+            // 输出关闭, 返回true
+            boolean isOutputShutdown = socket.isOutputShutdown();
+            // 输入关闭, 返回true
+            boolean isInputShutdown = socket.isInputShutdown();
+            log.info("socket isOutputShutdown:{}, isInputShutdown:{}", isOutputShutdown, isInputShutdown);
+            // 关闭输入流
+            socket.shutdownInput();
+            // 读服务response
+            while (scanner.hasNextLine()) {
+                log.info("response:{}", scanner.nextLine());
+            }
+
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    /**
+     * 可中断套接字
+     */
+    public static void useSocketChannel(String host, int port) {
+        try {
+            // 套接字有连接阻塞, 读写阻塞.
+            // 创建一个地址对象.
+            InetSocketAddress address = new InetSocketAddress(host, port);
+            // 创建的地址是否能被解析: 不能解析返回true
+            boolean unreasolved = address.isUnresolved();
+            // 中断套接字操作: 打开一个套接字通道, 并将其连接到远程地址
+            SocketChannel channel = SocketChannel.open(address);
+            // channel中没有流, 通过Buffer对象实现了read和write方法.
+            // 使用Scanner从SocketChannel获取信息
+            Scanner in = new Scanner(channel);
+            // 将通道转为输出流: 创建一个输出力, 用以从指定的通道写入数据
+            OutputStream outputStream = Channels.newOutputStream(channel);
+            // 创建一个输入流, 用以从指定的通道读取数据
+            InputStream inputStream = Channels.newInputStream(channel);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 }
