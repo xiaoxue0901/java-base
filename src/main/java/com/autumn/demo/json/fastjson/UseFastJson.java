@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
  * 3.JSONArray：fastJson提供json数组对象
  */
 @Slf4j
-public class FastJsonApplication {
+public class UseFastJson {
     /***************定义3个json格式的字符串*************************/
     //json字符串-简单对象型
     private static final String  JSON_OBJ_STR = "{\"studentName\":\"lily\",\"studentAge\":12}";
@@ -104,13 +104,6 @@ public class FastJsonApplication {
 
     }
 
-
-    public static void main(String[] args) {
-        testComplexJSONStrToJSONObject();
-        testJSONStrToJSONArray();
-        testJSONObjectToJsonStr();
-        testJSONStrToJSONObject();
-    }
 
 
 

@@ -3,6 +3,7 @@ package com.autumn.demo.json.fastjson;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.autumn.demo.javabase.entity.Student;
 import com.autumn.demo.javabase.entity.Teacher;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +18,7 @@ import java.util.List;
  * 好记性不如烂笔头, 看了还要写, 写了之后还要复习. 否则就忘光光了.去年看了Gson. 今年不用就记不住了
  */
 @Slf4j
-public class ObjectToJsonDemo {
+public class ObjectToJson {
 
     /**
      * 序列化: 无论是简单对象, 还是数组, 集合, 复杂对象(包含集合和对象). 都可以用JSON.toJSONString(obj)处理为json字符串;
@@ -60,7 +61,12 @@ public class ObjectToJsonDemo {
         log.info("转换5:{}", teacherJson);
     }
 
-    public static void main(String[] args) {
-        ObjectToJsonDemo.objSerialization();
+    /**
+     * 使用SerializerFeature功能
+     */
+    public static void useSeriFeature() {
+        Teacher teacher = new Teacher();
+        log.info("将值为空的成员也打印出来{}", JSON.toJSONString(teacher, SerializerFeature.WriteNullStringAsEmpty));
     }
+
 }
