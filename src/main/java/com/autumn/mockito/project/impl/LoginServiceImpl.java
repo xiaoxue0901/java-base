@@ -24,24 +24,24 @@ public class LoginServiceImpl implements LoginService {
         log.info("{}登录成功", userName);
         return userName;
     }
-    //
-    // public LoginServiceImpl() {
-    // }
-    //
-    // /**
-    //  * @param userService
-    //  * @Autowired 改为构造器注入
-    //  */
-    // public LoginServiceImpl(UserService userService) {
-    //     this.userService = userService;
-    // }
-    //
-    // /**
-    //  * @param userService
-    //  * @Autowired 改为Setter注入
-    //  */
-    // public void setUserService(UserService userService) {
-    //     this.userService = userService;
-    // }
+
+     public LoginServiceImpl() {
+     }
+
+     /**
+      * @param userService
+      * @Autowired 改为构造器注入
+      */
+     public LoginServiceImpl(UserService userService) {
+         this.userService = userService;
+     }
+
+     /**
+      * @param userService
+      * @Autowired 改为Setter注入
+      */
+     public void setUserService(UserService userService) {
+         this.userService = userService;
+     }
 
 }

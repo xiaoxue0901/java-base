@@ -48,9 +48,7 @@ public class LoginService3Test {
     @InjectMocks LoginServiceImpl loginService;
 
     /**
-     * 绕过限制
-     * 1. 不用去掉Autowired (去掉也没有影响)
-     * 2. 不用生成构造器或者setter注入
+     * 使用注解
      */
     @Test
     public void login() {

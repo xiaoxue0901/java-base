@@ -2,23 +2,16 @@ package com.autumn.mockito.project;
 
 import com.autumn.demo.javabase.JavaBaseApplication;
 import com.autumn.mockito.project.impl.LoginServiceImpl;
-import com.autumn.mockito.project.impl.UserServiceImpl;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnit;
-import org.mockito.junit.MockitoRule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
 
 /**
  * @author xql132@zcsmart.com
@@ -27,7 +20,7 @@ import static org.mockito.Mockito.mock;
  * @description Mockito测试: 4. 使用SpringBoot MockBean
  *
  */
-@SpringBootTest(classes = {JavaBaseApplication.class})
+@SpringBootTest(classes = {JavaBaseApplication.class,LoginServiceImpl.class})
 @RunWith(SpringRunner.class)
 public class LoginService4Test {
 
@@ -38,7 +31,7 @@ public class LoginService4Test {
     @MockBean
     UserService userService;
     @Autowired
-    LoginService loginService;
+    LoginServiceImpl loginService;
 
     /**
      * 绕过限制
