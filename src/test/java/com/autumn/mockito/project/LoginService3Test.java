@@ -3,13 +3,16 @@ package com.autumn.mockito.project;
 import com.autumn.demo.javabase.JavaBaseApplication;
 import com.autumn.mockito.project.impl.LoginServiceImpl;
 import com.autumn.mockito.project.impl.UserServiceImpl;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.MockitoRule;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
@@ -31,6 +34,7 @@ import static org.mockito.Mockito.mock;
 @SpringBootTest(classes = {JavaBaseApplication.class})
 @DirtiesContext
 @RunWith(SpringRunner.class)
+// @RunWith(MockitoJUnitRunner.class)
 public class LoginService3Test {
 
     /**
@@ -40,6 +44,12 @@ public class LoginService3Test {
      * 调用 MockitoAnnotations.initMocks(this)，一般在setup方法中调用
      */
     @Rule public MockitoRule role = MockitoJUnit.rule();
+
+    // @Before
+    // public void setUp() throws Exception {
+    //     MockitoAnnotations.initMocks(this);
+    // }
+
     /**
      * 对应于实现代码中的每个@Autowired字段，测试中可以用一个@Mock声明mock对象
      * ，并用@InjectMocks标示需要注入的对象。
