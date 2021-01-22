@@ -2,6 +2,7 @@ package com.autumn.mockito.project;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,15 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
  * @time 10:41
  * @description
  */
-@RestController
+@Controller
 @Slf4j
-@RequestMapping("/web")
 public class LoginController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/login")
-    public String login(@RequestParam String name) {
+    @GetMapping("/web/login")
+    public String login(String name) {
         log.info("登陆开始:{}", name);
         return userService.getUserName();
     }

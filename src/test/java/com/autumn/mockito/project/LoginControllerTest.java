@@ -31,10 +31,10 @@ import static org.hamcrest.Matchers.notNullValue;
  * 参考地址: https://spring.io/guides/gs/testing-web/
  *
  */
-@SpringBootTest
+// @SpringBootTest
 // @RunWith(SpringRunner.class)
 // @WebMvcTest(LoginController.class)
-@AutoConfigureMockMvc
+// @AutoConfigureMockMvc
 public class LoginControllerTest {
     //
     // @Autowired
@@ -47,12 +47,15 @@ public class LoginControllerTest {
     //     Assert.assertThat(controller, notNullValue());
     // }
 
-    @Autowired
-    private MockMvc mockMvc;
+    // @Autowired
+    // private MockMvc mockMvc;
 
     @Test
     public void name() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/web/login"))
+        LoginController controller = new LoginController();
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/web/login"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("默默")));
