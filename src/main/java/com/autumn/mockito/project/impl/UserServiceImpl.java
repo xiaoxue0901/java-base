@@ -14,6 +14,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String getUserName() {
-        return null;
+        return "默默";
     }
 }
