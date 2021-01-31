@@ -52,5 +52,8 @@ public class CustomerServiceTest {
         Mockito.when(customerDao.update(any(Customer.class), "id")).thenReturn(true);
         // 总结: 要么全部使用匹配器. 要么全部使用实际值
         Mockito.when(customerDao.update(any(Customer.class), any(String.class))).thenReturn(true);
+
+        // 调用方法
+        customerService.addCustomer(new Customer());
     }
 }

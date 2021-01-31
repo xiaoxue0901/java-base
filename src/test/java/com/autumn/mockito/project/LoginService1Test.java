@@ -23,7 +23,7 @@
   */
  @SpringBootTest(classes = {JavaBaseApplication.class})
  @RunWith(SpringRunner.class)
- public class LoginServiceTest {
+ public class LoginService1Test {
 
      /**
       * 构造方法注入
