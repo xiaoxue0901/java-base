@@ -34,11 +34,11 @@ public class ServerHandler implements Runnable {
             while (true) {
                 if ((expression = in.readLine()) == null) {
                     break;
-                } else {
-                    log.info("服务端收到信息:{}", expression);
-                    result = Caculator.cal(expression);
-                    out.println(result);
                 }
+                log.info("服务端收到信息:{}", expression);
+                result = Caculator.cal(expression);
+                out.println("server:"+result);
+
             }
 
         } catch (Exception e) {
@@ -57,17 +57,15 @@ public class ServerHandler implements Runnable {
                 out.close();
             }
             out = null;
-//            if (socket !=null) {
-//                try {
-//                    socket.close();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//            socket = null;
+           if (socket !=null) {
+               try {
+                   socket.close();
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+           }
+           socket = null;
         }
-
-
 
 
     }
