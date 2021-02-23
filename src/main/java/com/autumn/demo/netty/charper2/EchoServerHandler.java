@@ -1,4 +1,4 @@
-package com.autumn.demo.nettyaction.charper2;
+package com.autumn.demo.netty.charper2;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

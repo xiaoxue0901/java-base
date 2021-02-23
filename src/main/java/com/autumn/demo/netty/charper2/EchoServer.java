@@ -1,4 +1,4 @@
-package com.autumn.demo.nettyaction.charper2;
+package com.autumn.demo.netty.charper2;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
