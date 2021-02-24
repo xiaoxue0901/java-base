@@ -54,6 +54,9 @@ Java NIO Buffer
 flip(): position和limit, 
 读写模式: 
 
+代码: 1. Buffer, FileChannel的使用; 2. NIO通信
+理论知识: BIO模型和NIO模型
+
 
 
 
