@@ -1,10 +1,12 @@
 package com.autumn.demo.netty.bio;
 
+import io.netty.util.concurrent.DefaultThreadFactory;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.*;
 
 /**
  * @author xql132@zcsmart.com
@@ -20,6 +22,8 @@ public class Server {
     /** 单例的ServerSocket*/
     private static ServerSocket serverSocket;
 
+    static ArrayBlockingQueue workQueue = new ArrayBlockingQueue(10);
+
 
     public static void start() throws IOException {
         start(DEFAULT_PORT);
@@ -34,7 +38,10 @@ public class Server {
             log.info("服务端已启动, 端口号:{}, ip:{}", defaultPort, serverSocket.getInetAddress().getHostAddress());
             while (true) {
                 Socket socket = serverSocket.accept();
-                new Thread(new ServerHandler(socket)).start();
+                // 单线程模式
+                // new Thread(new ServerHandler(socket)).start();
+                // 线程池模式
+                creatPool(new ServerHandler(socket));
             }
         }finally {
             if (serverSocket!=null) {
@@ -44,6 +51,17 @@ public class Server {
             }
         }
 
+    }
+
+    /**
+     * 自定义线程池创建
+     * @param task
+     * @return
+     */
+    public static ThreadPoolExecutor creatPool(Runnable task) {
+       ThreadPoolExecutor executor = new ThreadPoolExecutor(10, 30,10, TimeUnit.SECONDS, workQueue, new ThreadPoolExecutor.AbortPolicy());
+       executor.execute(task);
+        return executor;
     }
 
 

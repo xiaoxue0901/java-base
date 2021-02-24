@@ -16,7 +16,7 @@ public class Client {
     /** 默认的端口号*/
     public static final int DEFAULT_SERVER_PORT = 7777;
     /**服务端IP地址*/
-    public static final String DEFAULT_SERVER_IP = "192.168.1.12";
+    public static final String DEFAULT_SERVER_IP = "172.80.80.6";
 
     public static void send(String expression) {
         send(DEFAULT_SERVER_PORT, expression);
@@ -34,9 +34,9 @@ public class Client {
             socket = new Socket(DEFAULT_SERVER_IP, defaultServerPort);
             log.info("启动客户端:{}", socket.getInetAddress().getHostAddress());
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-//            log.info("客户端输入:{}", in.readLine());
-            out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-            out.println(expression);
+            out = new PrintWriter(socket.getOutputStream(), true);
+            out.println("client:"+expression);
+            log.info("send to server succeed");
             log.info("---结果为:{}", in.readLine());
         } catch (Exception e) {
             log.error(e.getLocalizedMessage());
@@ -54,14 +54,14 @@ public class Client {
                 out.close();
             }
             out = null;
-//            if (socket !=null) {
-//                try {
-//                    socket.close();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//            socket = null;
+           if (socket !=null) {
+               try {
+                   socket.close();
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+           }
+           socket = null;
         }
     }
 
