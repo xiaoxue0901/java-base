@@ -1,11 +1,14 @@
 package com.autumn.demo.javabase.io.buffer;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.*;
 import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 
 /**
@@ -14,6 +17,7 @@ import java.nio.file.Path;
  * @time 14:15
  * @description Buffer使用
  */
+@Slf4j
 public class BufferDemo {
     public static final String ABS_FILE = "";
 
@@ -93,7 +97,7 @@ public class BufferDemo {
 
     }
 
-    private static void useBuffer(Buffer buffer) {
+    private static void bufferApi(Buffer buffer) {
         // 使用buffer的方法
         // 通过将位置复位到0, 并将界限设置到容量, 使这个缓冲区为写出做好准备
         buffer.clear();
@@ -111,5 +115,39 @@ public class BufferDemo {
         int pos = buffer.position();
         // 返回缓冲区的容量
         int cap =buffer.capacity();
+    }
+
+    public static void useBuffer() {
+        // 初始化一个容量为20的buffer
+        ByteBuffer byteBuffer = ByteBuffer.allocate(20);
+        String weather = "今天天气晴朗";
+        // 写入buffer
+        byteBuffer.put(weather.getBytes(StandardCharsets.UTF_8));
+        log.info("write buffer:{}", byteBuffer);
+        // 翻转到读模式: position=0; limit=weather.len
+        byteBuffer.flip();
+        while (byteBuffer.hasRemaining()) {
+            byte[] dest = new byte[18];
+            log.info("相对索引不影响position, limit:{}", byteBuffer.get(1));
+            byteBuffer.get(dest, byteBuffer.position(), byteBuffer.limit());
+            log.info("read buffer{}", new String(dest, StandardCharsets.UTF_8));
+            log.info("read after:{}", byteBuffer);
+        }
+        // clear: 将读模式切换为写模式,position置为0,limit=capacity.   写模式覆盖之前的数据来完成清除
+        byteBuffer.clear();
+        byte[] dest = new byte[18];
+        byteBuffer.get(dest, 0, 18);
+        log.info("clear data{}", new String(dest, StandardCharsets.UTF_8));
+        byteBuffer.clear();
+        log.info("clear 后的buffer:{}", byteBuffer);
+
+
+        byteBuffer.put(weather.substring(0,4).getBytes(StandardCharsets.UTF_8));
+        log.info("write 后的buffer:{}", byteBuffer);
+
+    }
+
+    public static void main(String[] args) {
+        useBuffer();
     }
 }
