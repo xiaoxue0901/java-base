@@ -54,8 +54,25 @@ Java NIO Buffer
 flip(): position和limit, 
 读写模式: 
 
-代码: 1. Buffer, FileChannel的使用; 2. NIO通信
+## Netty
+Netty概述: 
+Netty组件: Channel, ByteBuf, NIOEventLoop, ChannelHandler, Pipeline
+handler和childHandler的区别
+服务端的socket是在哪里初始化的?
+netty服务端启动多少个线程
+netty是如何解决JDK空轮询的bug
+netty是如何保证异步串行无锁化?
+config: NioServerSocketChannel
+从bind()开始整理源码流程
+
+代码: 1. Buffer, FileChannel的使用; 
+2. NIO通信实现聊天室
+3. Netty通行的demo
+4. bind()开始看源码
+5. CountDownLatch()
+6. TCP/IP完善.
 理论知识: BIO模型和NIO模型
+
 
 
 
