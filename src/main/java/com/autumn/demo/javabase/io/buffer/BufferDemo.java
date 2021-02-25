@@ -119,7 +119,7 @@ public class BufferDemo {
 
     public static void useBuffer() {
         // 初始化一个容量为20的buffer
-        ByteBuffer byteBuffer = ByteBuffer.allocate(20);
+        ByteBuffer byteBuffer = ByteBuffer.allocate(28);
         String weather = "今天天气晴朗";
         // 写入buffer
         byteBuffer.put(weather.getBytes(StandardCharsets.UTF_8));
@@ -147,7 +147,47 @@ public class BufferDemo {
 
     }
 
+    public static void useBufferDuplicate() {
+        ByteBuffer byteBuffer = ByteBuffer.allocate(28);
+        String weather = "今天天气晴朗";
+        // 写入buffer
+        byteBuffer.put(weather.getBytes(StandardCharsets.UTF_8));
+        log.info("first buffer:{}", byteBuffer);
+
+        ByteBuffer duplicate = byteBuffer.duplicate();
+        log.info("duplicate buffer:{}", duplicate);
+        // byteBuffer.flip();
+        // log.info("byteBuffer flip:{}", byteBuffer);
+        // log.info("duplicate not flip:{}", duplicate);
+        // // byteBuffer读2个
+        // byte[] dest1 = new byte[6];
+        // byteBuffer.get(dest1, 0, 6);
+        // log.info("dest1 get byteBuffer:{}", byteBuffer);
+        // log.info("dest1 get duplicate:{}", duplicate);
+        // // duplicate读4个
+        // duplicate.flip();
+        // log.info("duplicate  flip:{}", duplicate);
+        // byte[] dest2 = new byte[12];
+        // duplicate.get(dest2, 0, 12);
+        // // 打印结果
+        // log.info("get byteBuffer:{}, message:{}", byteBuffer, new String(byteBuffer.array()));
+        // log.info("get duplicate:{}, message:{}", duplicate, new String(duplicate.array()));
+
+        byteBuffer.put("雨".getBytes(StandardCharsets.UTF_8));
+        log.info("put byteBuffer:{}, message:{}", byteBuffer, new String(byteBuffer.array()));
+        duplicate.flip();
+        byte[] dest3 = new byte[18];
+        duplicate.get(dest3, 0, 18);
+        log.info("not put byteBuffer:{} message:{}", duplicate, new String(dest3));
+
+        duplicate.flip();
+        duplicate.put("晴".getBytes(StandardCharsets.UTF_8));
+        log.info("not put byteBuffer:{}, message:{}", byteBuffer, new String(byteBuffer.array()));
+        log.info("put byteBuffer:{} message:{}", duplicate, new String(duplicate.array()));
+
+    }
+
     public static void main(String[] args) {
-        useBuffer();
+        useBufferDuplicate();
     }
 }
