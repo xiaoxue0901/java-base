@@ -73,6 +73,19 @@ config: NioServerSocketChannel
 6. TCP/IP完善.
 理论知识: BIO模型和NIO模型
 
+## Netty2
+
+sharable: 多个channel可以被多个handler共享. 保证线程安全.
+一. netty的应用
+二. Netty的Reactor模式
+三. Netty的线程模型
+四. Netty入门需要掌握的知识点
+ 1. HelloWorld程序
+ 2. Netty的Reactor模式
+ 3. 需要掌握NioEventLoopGroup, Channel, ChannelHandler, Pipeline组件中的常用API
+
+ 
+
 
 
 
