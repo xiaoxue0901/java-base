@@ -16,6 +16,7 @@ import java.nio.file.Path;
  * @date 2020/12/18
  * @time 14:15
  * @description Buffer使用
+ * 1.
  */
 @Slf4j
 public class BufferDemo {
@@ -184,10 +185,39 @@ public class BufferDemo {
         duplicate.put("晴".getBytes(StandardCharsets.UTF_8));
         log.info("not put byteBuffer:{}, message:{}", byteBuffer, new String(byteBuffer.array()));
         log.info("put byteBuffer:{} message:{}", duplicate, new String(duplicate.array()));
+    }
+
+    public static void useBufferSlice() {
+        // 1. buffer初始化,分配容量
+        ByteBuffer byteBuffer = ByteBuffer.allocate(24);
+        // 2. buffer写操作
+        String weather = "今天下雨";
+        byteBuffer.put(weather.getBytes(StandardCharsets.UTF_8));
+        // 3. filp切换为读模式
+        byteBuffer.flip();
+        // 4. 读数据
+        byte[] dest = new byte[6];
+        byteBuffer.get(dest,0, 6);
+        log.info("read dest:{}, read byteBuffer:{}", new String(dest, StandardCharsets.UTF_8), byteBuffer);
+        // slice创建新缓冲区
+        byteBuffer.clear();
+        ByteBuffer slice = byteBuffer.slice();
+        log.info("slice :{}, slice data:{} ", slice, new String(slice.array(), StandardCharsets.UTF_8));
+        slice.put("适合睡觉".getBytes(StandardCharsets.UTF_8));
+        log.info("slice put :{}, slice data:{} ", slice, new String(slice.array(), StandardCharsets.UTF_8));
+        slice.flip();
+        byte[] sliceData = new byte[12];
+        slice.get(sliceData, 0, slice.remaining());
+        log.info("slice read dest:{}, read byteBuffer:{}", new String(sliceData, StandardCharsets.UTF_8), slice);
 
     }
 
+
+
     public static void main(String[] args) {
-        useBufferDuplicate();
+
+        // useBufferDuplicate();
+        // use slice
+        useBufferSlice();
     }
 }
