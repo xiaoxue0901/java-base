@@ -83,6 +83,7 @@ sharable: 多个channel可以被多个handler共享. 保证线程安全.
  1. HelloWorld程序
  2. Netty的Reactor模式
  3. 需要掌握NioEventLoopGroup, Channel, ChannelHandler, Pipeline组件中的常用API
+五. 项目需求的了解, 查看预习资料
 
  
 
