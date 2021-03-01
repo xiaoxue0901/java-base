@@ -1,4 +1,5 @@
 # java知识精选
+
 ## 1. 关于深克隆和浅克隆的差异和原理
 1. 克隆: 快速构造一个对象的副本
 2. native Object clone()-> Object的方法. native方法: 调用c语言实现.
@@ -68,4 +69,14 @@ static 静态变量和 transient 修饰的字段是不会被序列化的。静�
 		2. 惰性空间释放: 优化SDS字符串缩短操作, 当字符串缩短后,不立刻执行内存重分配,而是用free将释放的空间记录下来,用于后续的字符串增长使用.
 	6. 数据格式多样性: C字符串会用`\0`空字符结尾标识字符串结束, 故只能支持文本数据,而图片,音视频等二进制格式的数据无法保存;redis以处理二进制的方式操作buf数组中的数据,所以存入的是什么数据,取出来还是什么样.
 
-2. 
+
+# MySQL
+> 参考文献
+[MySQL海量数据优化](https://mp.weixin.qq.com/s/oyC0ugJWhanpkpIay54ZFQ)
+[数据库读写分离这个坑，让刚入职的我一脸懵逼](https://mp.weixin.qq.com/s/5E0ipyB9lzFwhI830RUiAw)
+[我们为什么要分库分表？](https://mp.weixin.qq.com/s/-5lxXz8vU94KQMursEwPWg)
+[请签收MySQL灵魂十连 ](https://mp.weixin.qq.com/s/h8GDJzCokDjM8OtTi3Ek-A)
+[14 个必须掌握的数据库面试题](https://mp.weixin.qq.com/s/WxVR1ADB4usdKJfxYOWJmg)
+[炸裂！MySQL 82 张图带你飞 ](https://mp.weixin.qq.com/s/QSQ1m_aHw4wBhv7_AQHDow)
+
+
