@@ -68,7 +68,30 @@
 
 # 设计模式
 [Spring 中经典的 9 种设计模式，打死也要记住啊！ ](https://mp.weixin.qq.com/s/-YkOeOk6t2fy7EruDdxigQ)
+[设计模式之工厂模式](https://blog.csdn.net/can_chen/article/details/105924115)
 
+# Spring
+
+1. Spring的bean的初始化
+	1. Spring对Bean的三类扩展点, 分别对应不同Bean的生命周期阶段
+	   a. Aware接口
+	   b. BeanPostProcessor
+	   c. InitializingBean和init-method
+	2. Spring的容器启动时bean的初始化流程
+	   1.实例化Bean实例
+	   2.设置对象属性
+	   3.检查Aware的相关接口并设置相关依赖. (比如:实现 ApplicationContextAware 接口的 setApplicationContext 方法)
+	   4.BeanPostProcessor前置处理
+	   5.是否实现InitializingBean接口.(比如: 实现InitializingBean 接口的 afterPropertiesSet )
+	   6.是否配置自定义的init-method
+	   7.BeanPostProcessor后置处理
+	   8.注册Destruction相关回调接口
+	   		使用中
+	   9.是否实现DisposableBean接口
+	   10.是否配置自定义的destory-method
+	   11. 结束
+	   
+	
 # Netty
 [面试官：Netty的线程模型可不是Reactor这么简单 ](https://mp.weixin.qq.com/s/vaqzvQCAoEfZn03dWXJ2BQ)
 [Netty 实现原理浅析 ](https://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651479592&idx=1&sn=b2aff56737d0e44667dd881d24ae27df&chksm=bd2532578a52bb41c1ed7f7cbe7bfc5b53bee7325a989a375adbe0e39195c209c0b0368aadb3&scene=21#wechat_redirect)
