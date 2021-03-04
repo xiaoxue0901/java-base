@@ -1,5 +1,8 @@
 package com.autumn.demo.javabase.set.map;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.TypeReference;
 import com.autumn.demo.javabase.bean.Employee;
 import com.autumn.demo.javabase.enumerate.base.RainBowEnum;
 import lombok.extern.slf4j.Slf4j;
@@ -134,6 +137,33 @@ public class UseMap {
         // 键的散列值
         int keyHashCode = System.identityHashCode(key);
         identityHashMap.put(key, "鲍勃");
+    }
+
+    public static void map() {
+        HashMap<String, List<String>> result = new HashMap<>(2);
+        List<String> addUrl = new LinkedList<>();
+        addUrl.add("/url1");
+        addUrl.add("/url2");
+        // result.put("add", JSON.toJSONString(addUrl));
+        result.put("add", addUrl);
+        List<String> addUrl2 = new LinkedList<>();
+        addUrl2.add("/url1");
+        addUrl2.add("/url2");
+        result.put("update", addUrl2);
+
+        log.info("map:{}", JSON.toJSONString(result));
+    }
+
+    public static void main(String[] args) {
+        map();
+
+        String result = "{\"add\":[\"/url1\",\"/url2\"],\"update\":[\"/url1\",\"/url2\"]}";
+        Map<String,List<String>> map = JSON.parseObject(result,new TypeReference<Map<String,List<String>>>(){});
+        map.forEach((k,v) -> {
+            log.info("k: :{}, v: :{}", k, v);
+
+        });
+
     }
 
 
