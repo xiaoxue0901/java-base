@@ -66,11 +66,67 @@
 6. 锁: [5000字 | 24张图带你彻底理解Java中的21种锁](https://mp.weixin.qq.com/s/1cWszX8MWXq_XNMXNyeDMg)
 7. 队列: [10分钟搞定 Java 并发队列好吗？好的！](https://mp.weixin.qq.com/s/TYDZy0O0CXFwiKU1zcOt5A)
 
+## 8. JVM
+**参考资料**
+1. [JVM（8）：JVM 知识点总览 - 高级 Java 工程师面试必备 ](https://mp.weixin.qq.com/s/EDieD01pqJyMIAiTB3V4Eg)
+2. [JVM（2）: JVM 内存结构 ](https://mp.weixin.qq.com/s/NpeHBU8VlGNPEMAIefgTvA)
+3. [Java 类的加载机制 ](https://mp.weixin.qq.com/s/3LOSQnLNuaa-dEGXA-q4-w)
+4. [JVM（3）：Java GC 算法垃圾收集器](https://mp.weixin.qq.com/s/-ujo_noQUM4KLqOPSbQdOw)
+5. [JVM（4）：JVM 调优 - 命令篇](https://mp.weixin.qq.com/s/9iDFxy1N1YKYcCzvis-U6A)
+6. [JVM（7）：JVM 调优 - 工具篇 ](https://mp.weixin.qq.com/s/1TmJvnof_yWDAuqffCVhOQ)
+7. [JVM夺命连环10问](https://mp.weixin.qq.com/s/hXXcp7JiNxpFeUxSuHyXhQ)
+
 # 设计模式
-[Spring 中经典的 9 种设计模式，打死也要记住啊！ ](https://mp.weixin.qq.com/s/-YkOeOk6t2fy7EruDdxigQ)
-[设计模式之工厂模式](https://blog.csdn.net/can_chen/article/details/105924115)
+**参考资料**
+1. [Spring 中经典的 9 种设计模式，打死也要记住啊！ ](https://mp.weixin.qq.com/s/-YkOeOk6t2fy7EruDdxigQ)
+2. [设计模式之工厂模式](https://blog.csdn.net/can_chen/article/details/105924115)
+
+# Mybatis
+**参考文献**
+1. [MyBatis 的执行流程，写得太好了叭](https://mp.weixin.qq.com/s/WjsyxcofGtvD7NAbR83sBA)
+2. [Mybatis 缓存特性的使用及源码分析](https://mp.weixin.qq.com/s/GuBVXxJHSzgA0p607mpdtw)
+3. [MyBatis 动态 SQL 底层原理分析 ](https://mp.weixin.qq.com/s/BLY1HZUtmYA_w1_MZfcYRQ)
+4. [MyBatis 拦截器原理探究 ](https://mp.weixin.qq.com/s/nFdjgTrVrI0q90fZFUxm2w)
+5. [MyBatis源码：原来 resultMap 解析完是这样](https://mp.weixin.qq.com/s/UmWct7D2KZZqwfHEfgWmvA)
+6. [Mybatis TypeHandler 的简单应用及源码分析](https://mp.weixin.qq.com/s/GLb_-dLVAWYb6-_GWGIF8w)
+7. [Mybatis 源码解读-设计模式总结](https://mp.weixin.qq.com/s/CGjr91c_6Zm4mF6t6gcv6A)
 
 # Spring
+**参考文献**
+1.[万字 Spring Cloud Gateway2.0，面向未来的技术，了解一下？](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651485415&idx=2&sn=d0fe001960c1bc60131b4cbbd19e2e15&chksm=bd2518988a52918e4e51957acece723f04604f0c81c719eca5b1e3c03b407f0ec671c48efd5f&mpshare=1&scene=24&srcid=03037fpikP0aISD7szsOH2lz&sharer_sharetime=1614785067154&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[谈谈几个 Spring Cloud 常见面试题及答案](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651489281&idx=2&sn=613fd2403345382f4d20ab8673ad18ae&chksm=bd25e87e8a526168acfb33ddc0013d4c099c53072f3c7f3875f6c14a9fc3117a9d832802ae78&mpshare=1&scene=24&srcid=03035eCU84FaOd6IQW6TpAQH&sharer_sharetime=1614785003782&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring 的 Bean 生命周期，11 张高清流程图及代码，深度解析](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651486951&idx=1&sn=cade003b51d142e26a515635e83bfaa2&chksm=bd2516988a529f8e01d3ee0e405a3f86c9427d390bb8af56f03b56828c245aa393c221970d4a&mpshare=1&scene=24&srcid=0303AftC9RfpkjdjhCDvss20&sharer_sharetime=1614784974796&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[从 Spring Cloud 看一个微服务框架的「五脏六腑」 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651480992&idx=1&sn=7dcd4df36a3bfcebacb6b6ec86d0a105&chksm=bd250fdf8a5286c9889403599073bc4cc7bcf133bf68b1c7e956efaca30f16e9e39402e7ac44&mpshare=1&scene=24&srcid=0303E4FWuEBP7cKmuXoy55yv&sharer_sharetime=1614784937636&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[拜托！面试请不要再问我Spring Cloud底层原理](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651482754&idx=1&sn=f9cfb4c5b978bfb8a470cd3df0eb487c&chksm=bd2506fd8a528feb330cd9c2a8eb8321ded24e7c6a73277c9ba67bd96c8d9061fe178842015c&mpshare=1&scene=24&srcid=0303dgKCdVptOieXb76lGbKk&sharer_sharetime=1614784757171&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring Cloud 20000 字总结，收藏！](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651489181&idx=2&sn=3ba2e20f840766a39a585d4679c6e393&chksm=bd25efe28a5266f433243dcacaf7e038344737f858fc0087f9b8d7d79584037a1aebe8402678&mpshare=1&scene=24&srcid=0303rdOb9gvYJa8f0jRcrNmV&sharer_sharetime=1614784689200&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[《我想进大厂》之Spring夺命连环10问](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651491607&idx=1&sn=376f404ebd243247820f8c4ba29255f6&chksm=bd25e1688a52687e341e4221b46e7647f5fc1ddf4fcae40a40f8c06073f4101505dcddeda033&mpshare=1&scene=24&srcid=0303xPbLFy7kdP0O4Iqs1obD&sharer_sharetime=1614784597172&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[如果我是面试官，我会问你 Spring 那些问题？](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651485881&idx=1&sn=2669fc00cbd9609bca916df2c73db34e&chksm=bd251ac68a5293d0e7548f2421d6c8fe560ee9bcef01bd5bb06bab234e9ebe42bd05f2e71010&mpshare=1&scene=24&srcid=03031vcZlRLcUs5VgGFGyzqN&sharer_sharetime=1614784545070&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[浅析 Spring 中的事件驱动机制 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651479156&idx=2&sn=e84fd558bf849cef11c916938c78fdf9&chksm=bd25300b8a52b91d20b3b7d098618c646d5fe048ad081b39df6a9101e8c12994b8c23a52ae55&mpshare=1&scene=24&srcid=03032bfB8d0dAHhkCEM3Gr7c&sharer_sharetime=1614784461439&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring 源码分析 : 非懒加载的单例 Bean 初始化过程 ( 上 ) ( 1 )](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651478432&idx=2&sn=8f79f37a2d45e11c799222ad292c9901&chksm=bd2535df8a52bcc9c0fcebd92094ec1b3b092a1fee60e51479971da20b14aa24d2e666d5faa4&mpshare=1&scene=24&srcid=0303fH83F4hff0QVV2cotf60&sharer_sharetime=1614784244372&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring Security 的原理及教程（ 上 ） ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651479090&idx=2&sn=ecfac563e4eeb7542a48fed4a16416a8&chksm=bd25304d8a52b95b83e186ab9b7c7773e3c9b893bee8b74c848e357e81bae05b738418bec15c&mpshare=1&scene=24&srcid=0303pF3fTtj1WmHUskOAI69M&sharer_sharetime=1614784180019&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring 源码分析：Bean 加载流程概览及配置文件读取 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651478430&idx=1&sn=3580249620ed0e21c878234fcea9c08a&chksm=bd2535e18a52bcf75b06a57075ec55c320f90016c3aae484f03ee080861ecb615c0925b38e5f&mpshare=1&scene=24&srcid=0303lgGwvrJfDXxyeJqrVS1w&sharer_sharetime=1614784126632&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring AMQP 错误处理策略详解 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651485787&idx=2&sn=95e7d96e7c90f51b617670b2cd3e85b2&chksm=bd251a248a529332b93c9611c7bbbc39164c8b7bfd12c81871cbd83b8f176b0e3432ecc01b6c&mpshare=1&scene=24&srcid=0303DN0Af8NgvSicGbIP8dRN&sharer_sharetime=1614784053354&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring 核心 ：FactoryBean ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651481445&idx=2&sn=0dc18771636d4b11e5a887f9258328c4&chksm=bd25091a8a52800cdc6195ac0e576361658a6d2b525a58ff2505238fa9d3cc86b965758b31c3&mpshare=1&scene=24&srcid=03031BT5q8qLdpswf1vryT4m&sharer_sharetime=1614784016325&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[聊一聊 Spring 中的线程安全性 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651481966&idx=1&sn=475e3e281ec6e15fb84e5aee5af40859&chksm=bd250b118a528207b9d939bff682398d0d5683ec365b9ccd19d7974504af51efe135ed33838c&mpshare=1&scene=24&srcid=0303J66U5T45j0W8k4IBBAmu&sharer_sharetime=1614783965424&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring 中的统一异常处理 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651481803&idx=2&sn=cddfae6e0640ac9b1ac6a81480cdf8a4&chksm=bd250ab48a5283a297b39ce7c195f8f6dc0a783072487125dca54dffc6ded3d7693e01d96e3b&mpshare=1&scene=24&srcid=0303q33ifKxCNDLjmeVpTYsR&sharer_sharetime=1614783921238&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring 源码探究 : 容器 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651482269&idx=1&sn=3864454746096db6830cd1a67edb7cce&chksm=bd2504e28a528df447564a655799c752f07ff7b71c26c40e5f4ea1cb8b0e3c1bbfe9ce0cd652&mpshare=1&scene=24&srcid=0303YyD25TVILFYtTR7zi9L7&sharer_sharetime=1614783882929&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring Boot面试问题集锦 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651485632&idx=2&sn=4e68e0b5d88d59a028ebc5cb25b913bd&chksm=bd2519bf8a5290a979ccf87f17644d9b75126180b78e57a39e855b23b2ce18d8c0d8a2199403&mpshare=1&scene=24&srcid=0303OR1vHqYxWNI3LWNX8MCp&sharer_sharetime=1614783861646&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring 事务管理 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651483890&idx=1&sn=a11cd4b321683b5673d0a08657db8689&chksm=bd25028d8a528b9b80dca38852dba6cace08226339125f5cf55adf9132033fba19080d6ae0da&mpshare=1&scene=24&srcid=0303QSqUM1LNGDugTAFBk4hE&sharer_sharetime=1614783783814&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[深入分析 Spring 框架中 AOP 与动态代理的整合原理 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651483455&idx=1&sn=d35ce888e60883c1f655cd04e03470fc&chksm=bd2501408a528856479995e0622249cea90cc24690daf05c0829b36c9b712f5399ae05657f11&mpshare=1&scene=24&srcid=0303IHOMYE6DgZTyIUZFbxKv&sharer_sharetime=1614783736991&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring Boot：启动原理解析](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651483916&idx=2&sn=82d54598440a4cb409299b16d87a89fd&chksm=bd2503738a528a658af5468be80efd5a236cedc2c0f3f33d89a20c9049c8b77b4b694392ef9e&mpshare=1&scene=24&srcid=0303QrWZ4hgjVtZyWdv3alcx&sharer_sharetime=1614783692040&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring Boot：启动原理解析](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651486250&idx=2&sn=36484c1182a5454d2f6245d707e56ff0&chksm=bd2514558a529d43e581fc5d049119e7ff2a898b972318b11ba535b80ab4afaf9123cf07e274&mpshare=1&scene=24&srcid=0303nBHy4BvzYya9A6MtnrPf&sharer_sharetime=1614783652450&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring AOP是什么？你都拿它做什么？](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651482435&idx=1&sn=4124d3d4a11d10c1398f7d2934591a64&chksm=bd25053c8a528c2aa4b9c562e42b201e9e0c139bb659919c9b1b73edae3d566ad9eb3230baf0&mpshare=1&scene=24&srcid=030368NPZpWE3VhUJJAXgEzd&sharer_sharetime=1614783612896&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring 知识点提炼](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651479323&idx=1&sn=a2d5cc1af9409afd9769821571cdba1e&chksm=bd2531648a52b8726bb04432543df9d2764133e45a0fd2eb4a37e970d06eee63cbb526480201&mpshare=1&scene=24&srcid=0303dBq4PCYbgTpuINoyoAz2&sharer_sharetime=1614783500932&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring AOP 的实现机制 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651480861&idx=1&sn=ed21a270d10bb735eb5b4519306b0e61&chksm=bd250f628a528674717608187947d98befdb816007353f7d344ffaa53cec8f284e6e70bc06c2&mpshare=1&scene=24&srcid=0303FPvu68qlWoJGn0RD89cj&sharer_sharetime=1614783455382&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring AOP 的实现原理](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651480177&idx=1&sn=c2d7772af7285a60bcb2cadd2d7a79df&chksm=bd250c0e8a52851832f08635f13f48fe682aa0655335e0998eae7e3fa94c07710655ef2cf240&mpshare=1&scene=24&srcid=03032Dc4qzFUs4tv6FdvimSS&sharer_sharetime=1614783432082&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[你必须要懂的 Spring：Aop](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651484616&idx=1&sn=feb6275ead51abfab94e4eda4b395ec0&chksm=bd251db78a5294a10a80da01732ce20eb61908ab70243a63228a0e83898a06dbc4b0b285cfb2&mpshare=1&scene=24&srcid=0303mN1QRoCGbyI7HTeJIZWh&sharer_sharetime=1614783409854&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[下次面试别再问我什么是 Spring AOP 和代理了！](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651482306&idx=1&sn=38cb83c3b1b646814096e78a89db3cf1&chksm=bd2504bd8a528dab8bfaba33ba8b35edc92dcb9124fff107348d634e33b0a58db22de0300d80&mpshare=1&scene=24&srcid=0303vOnI445zE9I74rUbIHib&sharer_sharetime=1614783378632&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[面试必问：Spring循环依赖的三种方式 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651482735&idx=1&sn=5c7ed61dc9b1f661f68ac6e17338d1c4&chksm=bd2506108a528f062720bb9e79f6528abfaa27cd4e8cd457aaf1a2fa8022564c09a748fe671a&mpshare=1&scene=24&srcid=0303CJn5Cw8orHFAAraMYdKw&sharer_sharetime=1614783349066&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring 面试问题 TOP 50 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651481817&idx=1&sn=5d9271fd8e531f405185734a42dab6c3&chksm=bd250aa68a5283b03f655c449c83a7a00965d40d2cb24b8cb7acc0e9be8999387e5d9e9692f6&mpshare=1&scene=24&srcid=0303fAvGsjUnrK7XqLCuNdtG&sharer_sharetime=1614783312184&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[图解 Spring 循环依赖，写得太好了！](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651488388&idx=1&sn=f1e97aa73c5965a375e3741b9fb7a8fd&chksm=bd25ecfb8a5265ed1054cec40e76e208524b09ec3ddd1d6595ab9e1e133a3629f35802228814&mpshare=1&scene=24&srcid=0303GNOBKqGHMGS2Uk2KCRDn&sharer_sharetime=1614783271236&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[Spring 的 Controller 是单例还是多例？怎么保证并发的安全](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651491932&idx=1&sn=488ccf2966cd8266226cdd456fc42380&chksm=bd25e2238a526b35aea107834c93ddbe130ca1e2f60f69e47932a7942c0e319cc869a42ef507&mpshare=1&scene=24&srcid=0303Yd7eXbcS88YoldAhgNdX&sharer_sharetime=1614783230890&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[面试官: 讲讲 Spring 事务有哪些坑?](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651491027&idx=2&sn=f5eb01fbb179efa727aed2e8f147f496&chksm=bd25e6ac8a526fba3d6a88f5129c9f3592cbc92e57759a32b005248baa54775fde5c999c4c62&mpshare=1&scene=24&srcid=0303iGs01LN3PLhgdlxuv2cO&sharer_sharetime=1614783207278&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
+1.[3W 字的 Spring Boot 超详细总结 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651490602&idx=1&sn=6a7c5440d02bd860ab03cb204855a968&chksm=bd25e5558a526c43ea7df1074296300f7c26c36363208f38bdc60331c9bf2343077a52347f14&mpshare=1&scene=24&srcid=0303JPSWjIiyh1En97y1l1Cg&sharer_sharetime=1614783160289&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 
 1. Spring的bean的初始化
 	1. Spring对Bean的三类扩展点, 分别对应不同Bean的生命周期阶段
@@ -404,11 +460,7 @@ redisObject{
 	* PG具备更高的可靠性，对数据一致性完整性的支持高于MySQL，因此PG更加适合严格的企业应用场景（比如金融、电信、ERP、CRM）；
 	* MySQL查询速度较快，更加适合业务逻辑相对简单、数据可靠性要求较低的互联网场景（比如google、facebook、alibaba）。
 
-# Mybatis
-**参考文献**
-1. [MyBatis 的执行流程，写得太好了叭](https://mp.weixin.qq.com/s/WjsyxcofGtvD7NAbR83sBA)
-
-
+	
 # Zookeeper
 > ZooKeeper 是 Apache 软件基金会的一个软件项目，它为大型分布式计算提供开源的分布式配置服务、同步服务和命名注册。ZooKeeper 曾经是 Hadoop 的一个子项目，但现在是一个顶级独立的开源项目。
 > 一致性在 ZK 中是最终一致性，ZK 无法保证实时的强一致性，有一个时间窗口，但是最终 ZK 集群中的数据都会是一样的。
