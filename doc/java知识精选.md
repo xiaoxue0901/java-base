@@ -58,6 +58,7 @@
 [线程池的7种创建方式，强烈推荐你用它](https://mp.weixin.qq.com/s/byLuH4uTwyDiJCBQiUbpDw)
 
 ## 7. 并发编程
+**参考资料**
 1. queue: [45张图庖丁解牛18种Queue，给你整得明明白白！](https://mp.weixin.qq.com/s/CAhPCb81jS6MXMTA76k_uA)
 2. 集合: [21张图带你领略集合的线程不安全 ](https://mp.weixin.qq.com/s/qJ0ELP4m9x8tESLXwlhpmw)
 3. volatile: [​反制面试官 | 14张原理图 | 再也不怕被问 volatile! ](https://mp.weixin.qq.com/s/NuC06tTCe5spYWYv_23DmA)
@@ -66,6 +67,22 @@
 6. 锁: [5000字 | 24张图带你彻底理解Java中的21种锁](https://mp.weixin.qq.com/s/1cWszX8MWXq_XNMXNyeDMg)
 7. 队列: [10分钟搞定 Java 并发队列好吗？好的！](https://mp.weixin.qq.com/s/TYDZy0O0CXFwiKU1zcOt5A)
 
+### 问题
+1. CAS是什么? 原理?
+    1.  全称:Compare and Swap.Compare-And-Swap（比较并交换）。比较变量的现在值与之前的值是否一致，若一致则替换，否则不替换。
+    2. 作用: 原子性更新变量值，保证线程安全。
+    3. CAS指令：需要有三个操作数，变量的当前值（V），旧的预期值（A），准备设置的新值（B）
+    4. CAS指令执行条件：当且仅当V=A时，处理器才会设置V=B，否则不执行更新。
+    5. CAS是一种系统原语，原语属于操作系统用于范畴，是由若干条指令组成，用于完成某个功能的一个过程，并且原语的执行必须是连续的，在执行过程中不允许被中断，所以CAS是一条CPU的原子指令，不会造成所谓的数据不一致的问题，所以CAS是线程安全的。
+    6. 原理: 通过do..while来自旋实现, 1. 从主内存中拿到V值. 2. 判断: 用旧值A与V判断,一致则将V改为B, 结束自旋. 
+    7. CAS会带来ABA的问题
+2. ABA问题
+    `概念: CAS只管开头和结尾，中间过程不关心，只要头尾相同，则认为可以进行修改，而中间过程很可能被其他人改过。`
+    1. ABA 问题的危害
+        * 带有消耗类的场景，比如库存减少，商品卖出。这种情况会消耗资源, 数据不一致. 
+    2. 如何解决ABA问题  
+        * 思路: 使用CAS+版本号.
+        * 具体: 用带版本号的原子引用类AtomicStampedReference  
 ## 8. JVM
 **参考资料**
 1. [JVM（8）：JVM 知识点总览 - 高级 Java 工程师面试必备 ](https://mp.weixin.qq.com/s/EDieD01pqJyMIAiTB3V4Eg)
