@@ -75,6 +75,7 @@
 5. [JVM（4）：JVM 调优 - 命令篇](https://mp.weixin.qq.com/s/9iDFxy1N1YKYcCzvis-U6A)
 6. [JVM（7）：JVM 调优 - 工具篇 ](https://mp.weixin.qq.com/s/1TmJvnof_yWDAuqffCVhOQ)
 7. [JVM夺命连环10问](https://mp.weixin.qq.com/s/hXXcp7JiNxpFeUxSuHyXhQ)
+8. [这些不可不知的JVM知识，我都用思维导图整理好了 ](https://mp.weixin.qq.com/s/oyxKUxdJRLOjdM8a6fCQYA)
 
 # 设计模式
 **参考资料**
