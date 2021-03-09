@@ -94,6 +94,7 @@
 
 # Spring
 **参考文献**
+1.[深入理解 Spring 事务原理 ](https://mp.weixin.qq.com/s/FIMhan9hxijTkG4uLyEwsw)
 1.[万字 Spring Cloud Gateway2.0，面向未来的技术，了解一下？](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651485415&idx=2&sn=d0fe001960c1bc60131b4cbbd19e2e15&chksm=bd2518988a52918e4e51957acece723f04604f0c81c719eca5b1e3c03b407f0ec671c48efd5f&mpshare=1&scene=24&srcid=03037fpikP0aISD7szsOH2lz&sharer_sharetime=1614785067154&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[谈谈几个 Spring Cloud 常见面试题及答案](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651489281&idx=2&sn=613fd2403345382f4d20ab8673ad18ae&chksm=bd25e87e8a526168acfb33ddc0013d4c099c53072f3c7f3875f6c14a9fc3117a9d832802ae78&mpshare=1&scene=24&srcid=03035eCU84FaOd6IQW6TpAQH&sharer_sharetime=1614785003782&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[Spring 的 Bean 生命周期，11 张高清流程图及代码，深度解析](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651486951&idx=1&sn=cade003b51d142e26a515635e83bfaa2&chksm=bd2516988a529f8e01d3ee0e405a3f86c9427d390bb8af56f03b56828c245aa393c221970d4a&mpshare=1&scene=24&srcid=0303AftC9RfpkjdjhCDvss20&sharer_sharetime=1614784974796&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
@@ -163,7 +164,8 @@
 
 # Redis
 **参考文献**
-[一不小心肝出了4W字的Redis面试教程 ](https://mp.weixin.qq.com/s/qI334XgLHrJuU2Oqqi4uwg)
+1. [一不小心肝出了4W字的Redis面试教程 ](https://mp.weixin.qq.com/s/qI334XgLHrJuU2Oqqi4uwg)
+2. [Redis最佳实践：7个维度+43条使用规范，带你彻底玩转Redis](https://mp.weixin.qq.com/s/wmGZDCOqqes0LpQeIn3fpA)
 ## 问题
 1. redis的数据结构`string`的底层实现
 	0. 参考: [redis为什么把简单的字符串设计成SDS](https://mp.weixin.qq.com/s/k41iYHZwYb3aiY_jmQiSfg)
