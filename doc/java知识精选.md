@@ -303,10 +303,62 @@
 	   11. 结束
 2. Spring的事务
 	1. Spring事务的基本原理
-		`Spring事务的本质是数据库对事务的支持, 没有数据库对事务的支持, spring是无法提供事务功能的.`
-	2.    
-	   
-	
+		1. 概念`Spring事务的本质是数据库对事务的支持, 没有数据库对事务的支持, spring是无法提供事务功能的.`
+		2. 纯JDBC操作数据库, 用到事务,具体步骤:
+			1. 获取连接: Connection conn = DriverManager.getConnection();
+			2. 开启事务: conn.setAutoCommit(true/false);
+			3. 执行CRUD
+			4. 提交事务conn.commit()/回滚事务conn.rollback();
+			5. 关闭连接: conn.close();
+		3. Spring的事务管理功能
+			1. 开启spring的事务管理功能后, 就省略了2和4步骤, 由spring自动完成.
+			2. 注解方式的事务处理	
+				1. 配置文件开启注解驱动, 在相关的类和方法上加上@Transactional注解.
+				2. Spring启动时解析生成相关的bean, 对于有@Transactional注解的类和方法, 自动生成代理类, 并根据@Transactional的相关参数进行配置和注入,
+					这样就在代理中把相关的事务处理了.(开启正常提交事务, 异常回滚事务)
+				3. 真正的数据库层面的事务提交和回滚是通过binlog或redo log实现了.
+	2. Spring的事务机制
+		1. 概念: `用统一的机制处理不同的数据访问技术的事务处理, Spring的事务机制提供了一个PlatformTransactionManager接口, 不同的数据访问技术的事务用不同的接口实现`
+	   	2. 数据访问技术及实现
+			* JDBC: DataSourceTransactionManager
+			* JPA: JpaTransactionManager
+			* Hibernate: HibernateTransactionManager
+			* JDO: JdoTransactionManager
+			* 分布式事务: JtaTransactionManager
+		3. 声明式事务
+			1. 概念: `Spring支持声明式事务, 即使用注解来选择需要事务的方法或类; 使用@Transactional注解在方法上表明该方法需要事务支持.`
+	3. AOP代理的两种实现
+		1. Java动态代理: `jdk是代理接口,私有方法必然不会存在接口里, 所以不会被拦截到;`
+		   1. 通过实现InvocationHandler接口创建自己的调用处理器.
+			2. 通过为 Proxy 类指定 ClassLoader 对象和一组 interface 来创建动态代理类；
+			3. 通过反射机制获得动态代理类的构造函数，其唯一参数类型是调用处理器接口类型；
+			4. 通过构造函数创建动态代理类实例，构造时调用处理器对象作为参数被传入
+		2. CGLIB代理: `cglib是子类, private的方法,final方法不会出现在子类, 也不会被拦截`
+			1. 
+		3. 原理区别: 
+		   * java动态代理是利用反射机制生成一个实现代理接口的匿名类，在调用具体方法前调用InvokeHandler来处理。
+		   * cglib动态代理是利用asm开源包，对代理对象类的class文件加载进来，通过修改其字节码生成子类来处理。
+	4. Spring事务的传播属性
+		1. 概念: `Spring事务的传播属性:定义在存在多个事务同时存在的时候, spring应该如何处理这些事务的行为`
+		2. 数据库隔离级别:
+			1.Read-uncommited: 读未提交, 导致脏读
+		    2. Read-commited: 读已提交, 避免脏读, 允许不可重复读和幻读(sqlserver,oracle的默认隔离级别)
+			3. Repeatable-Read: 可重复读, 会导致幻读. (mysql的默认隔离级别)
+			4. Serializable: 串行化读. 事务只能一个一个执行, 执行效率低.
+		3. Spring的隔离级别
+			`和数据库的隔离级别相比, 多了ISOLATION_DEFAULT: 使用数据库默认的隔离级别; 其他的4个隔离级别和数据库的相对应`
+		4. 事务的嵌套(spring事务传播机制)   
+		   `假设外层事务 Service A 的 Method A()[PROPAGATION_REQUIRED] 调用 内层Service B 的 Method B()[用下面的事务传递规则]`
+			1. PROPAGATION_REQUIRED(spring 默认): methodA有事务, methodB沿用A的事务; methodA没有事务, methodB自己创建一个事务.
+			2. PROPAGATION_REQUIRES_NEW: 新创建事务, 与methodA的事务无关.
+			3. PROPAGATION_SUPPORTS: 沿用A的事务, 如果A没有开启事务, 则B也没有事务. 内部方法的事务性完全依赖于最外层的事务
+			4. PROPAGATION_NESTED: 
+			   a. 捕获异常, 执行异常分支逻辑
+			   b. 外部事务A, 通过具体配置决定是回滚还是提交.
+	5. SpringBoot对事务的支持		   
+		* `通过org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration类, 自动开启对注解事务的支持`
+		* @Transactional(readOnly=true): 只读事务. `从这一点设置的时间点开始（时间点a）到这个事务结束的过程中，其他事务所提交的数据，该事务将看不见`
+		* 只读事务的场合: 一次执行多条查询语句. 避免出现多条数据查询之间数据被其他用户改变的情况, 保证整体的统计查询不会出现数据不一致的状态.	
 # Netty
 [面试官：Netty的线程模型可不是Reactor这么简单 ](https://mp.weixin.qq.com/s/vaqzvQCAoEfZn03dWXJ2BQ)
 [Netty 实现原理浅析 ](https://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651479592&idx=1&sn=b2aff56737d0e44667dd881d24ae27df&chksm=bd2532578a52bb41c1ed7f7cbe7bfc5b53bee7325a989a375adbe0e39195c209c0b0368aadb3&scene=21#wechat_redirect)
