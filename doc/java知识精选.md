@@ -117,7 +117,6 @@
 1.[Spring 事务管理 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651483890&idx=1&sn=a11cd4b321683b5673d0a08657db8689&chksm=bd25028d8a528b9b80dca38852dba6cace08226339125f5cf55adf9132033fba19080d6ae0da&mpshare=1&scene=24&srcid=0303QSqUM1LNGDugTAFBk4hE&sharer_sharetime=1614783783814&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[深入分析 Spring 框架中 AOP 与动态代理的整合原理 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651483455&idx=1&sn=d35ce888e60883c1f655cd04e03470fc&chksm=bd2501408a528856479995e0622249cea90cc24690daf05c0829b36c9b712f5399ae05657f11&mpshare=1&scene=24&srcid=0303IHOMYE6DgZTyIUZFbxKv&sharer_sharetime=1614783736991&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[Spring Boot：启动原理解析](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651483916&idx=2&sn=82d54598440a4cb409299b16d87a89fd&chksm=bd2503738a528a658af5468be80efd5a236cedc2c0f3f33d89a20c9049c8b77b4b694392ef9e&mpshare=1&scene=24&srcid=0303QrWZ4hgjVtZyWdv3alcx&sharer_sharetime=1614783692040&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
-1.[Spring Boot：启动原理解析](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651486250&idx=2&sn=36484c1182a5454d2f6245d707e56ff0&chksm=bd2514558a529d43e581fc5d049119e7ff2a898b972318b11ba535b80ab4afaf9123cf07e274&mpshare=1&scene=24&srcid=0303nBHy4BvzYya9A6MtnrPf&sharer_sharetime=1614783652450&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[Spring AOP是什么？你都拿它做什么？](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651482435&idx=1&sn=4124d3d4a11d10c1398f7d2934591a64&chksm=bd25053c8a528c2aa4b9c562e42b201e9e0c139bb659919c9b1b73edae3d566ad9eb3230baf0&mpshare=1&scene=24&srcid=030368NPZpWE3VhUJJAXgEzd&sharer_sharetime=1614783612896&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[Spring 知识点提炼](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651479323&idx=1&sn=a2d5cc1af9409afd9769821571cdba1e&chksm=bd2531648a52b8726bb04432543df9d2764133e45a0fd2eb4a37e970d06eee63cbb526480201&mpshare=1&scene=24&srcid=0303dBq4PCYbgTpuINoyoAz2&sharer_sharetime=1614783500932&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[Spring AOP 的实现机制 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651480861&idx=1&sn=ed21a270d10bb735eb5b4519306b0e61&chksm=bd250f628a528674717608187947d98befdb816007353f7d344ffaa53cec8f284e6e70bc06c2&mpshare=1&scene=24&srcid=0303FPvu68qlWoJGn0RD89cj&sharer_sharetime=1614783455382&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
@@ -131,6 +130,7 @@
 1.[面试官: 讲讲 Spring 事务有哪些坑?](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651491027&idx=2&sn=f5eb01fbb179efa727aed2e8f147f496&chksm=bd25e6ac8a526fba3d6a88f5129c9f3592cbc92e57759a32b005248baa54775fde5c999c4c62&mpshare=1&scene=24&srcid=0303iGs01LN3PLhgdlxuv2cO&sharer_sharetime=1614783207278&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[3W 字的 Spring Boot 超详细总结 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651490602&idx=1&sn=6a7c5440d02bd860ab03cb204855a968&chksm=bd25e5558a526c43ea7df1074296300f7c26c36363208f38bdc60331c9bf2343077a52347f14&mpshare=1&scene=24&srcid=0303JPSWjIiyh1En97y1l1Cg&sharer_sharetime=1614783160289&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 
+## 问题
 1. Spring的bean的初始化
 	1. Spring对Bean的三类扩展点, 分别对应不同Bean的生命周期阶段
 	   a. Aware接口
@@ -149,6 +149,10 @@
 	   9.是否实现DisposableBean接口
 	   10.是否配置自定义的destory-method
 	   11. 结束
+2. Spring的事务
+	1. Spring事务的基本原理
+		`Spring事务的本质是数据库对事务的支持, 没有数据库对事务的支持, spring是无法提供事务功能的.`
+	2.    
 	   
 	
 # Netty
