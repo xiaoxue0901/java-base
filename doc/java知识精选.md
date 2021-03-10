@@ -248,6 +248,7 @@
 # Spring
 **参考文献**
 1.[深入理解 Spring 事务原理 ](https://mp.weixin.qq.com/s/FIMhan9hxijTkG4uLyEwsw)
+2.[面试官: 讲讲 Spring 事务有哪些坑?](https://mp.weixin.qq.com/s/BRRELMbULFL-2eZRSehC7w)
 1.[万字 Spring Cloud Gateway2.0，面向未来的技术，了解一下？](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651485415&idx=2&sn=d0fe001960c1bc60131b4cbbd19e2e15&chksm=bd2518988a52918e4e51957acece723f04604f0c81c719eca5b1e3c03b407f0ec671c48efd5f&mpshare=1&scene=24&srcid=03037fpikP0aISD7szsOH2lz&sharer_sharetime=1614785067154&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[谈谈几个 Spring Cloud 常见面试题及答案](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651489281&idx=2&sn=613fd2403345382f4d20ab8673ad18ae&chksm=bd25e87e8a526168acfb33ddc0013d4c099c53072f3c7f3875f6c14a9fc3117a9d832802ae78&mpshare=1&scene=24&srcid=03035eCU84FaOd6IQW6TpAQH&sharer_sharetime=1614785003782&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[Spring 的 Bean 生命周期，11 张高清流程图及代码，深度解析](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651486951&idx=1&sn=cade003b51d142e26a515635e83bfaa2&chksm=bd2516988a529f8e01d3ee0e405a3f86c9427d390bb8af56f03b56828c245aa393c221970d4a&mpshare=1&scene=24&srcid=0303AftC9RfpkjdjhCDvss20&sharer_sharetime=1614784974796&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
@@ -266,7 +267,6 @@
 1.[Spring 中的统一异常处理 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651481803&idx=2&sn=cddfae6e0640ac9b1ac6a81480cdf8a4&chksm=bd250ab48a5283a297b39ce7c195f8f6dc0a783072487125dca54dffc6ded3d7693e01d96e3b&mpshare=1&scene=24&srcid=0303q33ifKxCNDLjmeVpTYsR&sharer_sharetime=1614783921238&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[Spring 源码探究 : 容器 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651482269&idx=1&sn=3864454746096db6830cd1a67edb7cce&chksm=bd2504e28a528df447564a655799c752f07ff7b71c26c40e5f4ea1cb8b0e3c1bbfe9ce0cd652&mpshare=1&scene=24&srcid=0303YyD25TVILFYtTR7zi9L7&sharer_sharetime=1614783882929&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[Spring Boot面试问题集锦 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651485632&idx=2&sn=4e68e0b5d88d59a028ebc5cb25b913bd&chksm=bd2519bf8a5290a979ccf87f17644d9b75126180b78e57a39e855b23b2ce18d8c0d8a2199403&mpshare=1&scene=24&srcid=0303OR1vHqYxWNI3LWNX8MCp&sharer_sharetime=1614783861646&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
-1.[Spring 事务管理 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651483890&idx=1&sn=a11cd4b321683b5673d0a08657db8689&chksm=bd25028d8a528b9b80dca38852dba6cace08226339125f5cf55adf9132033fba19080d6ae0da&mpshare=1&scene=24&srcid=0303QSqUM1LNGDugTAFBk4hE&sharer_sharetime=1614783783814&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[深入分析 Spring 框架中 AOP 与动态代理的整合原理 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651483455&idx=1&sn=d35ce888e60883c1f655cd04e03470fc&chksm=bd2501408a528856479995e0622249cea90cc24690daf05c0829b36c9b712f5399ae05657f11&mpshare=1&scene=24&srcid=0303IHOMYE6DgZTyIUZFbxKv&sharer_sharetime=1614783736991&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[Spring Boot：启动原理解析](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651483916&idx=2&sn=82d54598440a4cb409299b16d87a89fd&chksm=bd2503738a528a658af5468be80efd5a236cedc2c0f3f33d89a20c9049c8b77b4b694392ef9e&mpshare=1&scene=24&srcid=0303QrWZ4hgjVtZyWdv3alcx&sharer_sharetime=1614783692040&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[Spring AOP是什么？你都拿它做什么？](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651482435&idx=1&sn=4124d3d4a11d10c1398f7d2934591a64&chksm=bd25053c8a528c2aa4b9c562e42b201e9e0c139bb659919c9b1b73edae3d566ad9eb3230baf0&mpshare=1&scene=24&srcid=030368NPZpWE3VhUJJAXgEzd&sharer_sharetime=1614783612896&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
@@ -279,7 +279,6 @@
 1.[Spring 面试问题 TOP 50 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651481817&idx=1&sn=5d9271fd8e531f405185734a42dab6c3&chksm=bd250aa68a5283b03f655c449c83a7a00965d40d2cb24b8cb7acc0e9be8999387e5d9e9692f6&mpshare=1&scene=24&srcid=0303fAvGsjUnrK7XqLCuNdtG&sharer_sharetime=1614783312184&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[图解 Spring 循环依赖，写得太好了！](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651488388&idx=1&sn=f1e97aa73c5965a375e3741b9fb7a8fd&chksm=bd25ecfb8a5265ed1054cec40e76e208524b09ec3ddd1d6595ab9e1e133a3629f35802228814&mpshare=1&scene=24&srcid=0303GNOBKqGHMGS2Uk2KCRDn&sharer_sharetime=1614783271236&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[Spring 的 Controller 是单例还是多例？怎么保证并发的安全](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651491932&idx=1&sn=488ccf2966cd8266226cdd456fc42380&chksm=bd25e2238a526b35aea107834c93ddbe130ca1e2f60f69e47932a7942c0e319cc869a42ef507&mpshare=1&scene=24&srcid=0303Yd7eXbcS88YoldAhgNdX&sharer_sharetime=1614783230890&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
-1.[面试官: 讲讲 Spring 事务有哪些坑?](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651491027&idx=2&sn=f5eb01fbb179efa727aed2e8f147f496&chksm=bd25e6ac8a526fba3d6a88f5129c9f3592cbc92e57759a32b005248baa54775fde5c999c4c62&mpshare=1&scene=24&srcid=0303iGs01LN3PLhgdlxuv2cO&sharer_sharetime=1614783207278&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[3W 字的 Spring Boot 超详细总结 ](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651490602&idx=1&sn=6a7c5440d02bd860ab03cb204855a968&chksm=bd25e5558a526c43ea7df1074296300f7c26c36363208f38bdc60331c9bf2343077a52347f14&mpshare=1&scene=24&srcid=0303JPSWjIiyh1En97y1l1Cg&sharer_sharetime=1614783160289&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 
 ## 问题
@@ -359,6 +358,18 @@
 		* `通过org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration类, 自动开启对注解事务的支持`
 		* @Transactional(readOnly=true): 只读事务. `从这一点设置的时间点开始（时间点a）到这个事务结束的过程中，其他事务所提交的数据，该事务将看不见`
 		* 只读事务的场合: 一次执行多条查询语句. 避免出现多条数据查询之间数据被其他用户改变的情况, 保证整体的统计查询不会出现数据不一致的状态.	
+	6. Spring事务不生效的情况
+		* 场景1: 在一个Service内部(或者说在一个类中)，事务方法之间的嵌套调用，普通方法和事务方法之间的嵌套调用，都不会开启新的事务！
+		* 原因: spring事务是通过动态代理实现的, 动态代理最终要调用原始对象, 而原始对象在取调用方法时,就不会再出发代理了.
+		* 场景2: 方法修饰符不是public
+		* 原因: AOP的实现: JDK动态代理和CGLIB代理都不支持对非public方法的反射调用
+		* 场景3: 发生了错误的异常或者异常被吞了.
+		* 原因: rollBackFor中指定的异常默认是RuntimeException, 没有在这个范围内的异常不会回滚.
+		* 场景4: 数据库不支持事务
+		* 原因: Spring 事务用的是数据库的事务，如果数据库不支持事务，那 Spring 事务肯定是无法生效滴。
+	7. 如何保证Spring事务的连接唯一性
+		* Connection 在事务开始时封装在了 ThreadLocal 里，后面事务执行过程中，都是从 ThreadLocal中 取的。肯定能保证唯一，因为都是在一个线程中执行。
+	
 # Netty
 [面试官：Netty的线程模型可不是Reactor这么简单 ](https://mp.weixin.qq.com/s/vaqzvQCAoEfZn03dWXJ2BQ)
 [Netty 实现原理浅析 ](https://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651479592&idx=1&sn=b2aff56737d0e44667dd881d24ae27df&chksm=bd2532578a52bb41c1ed7f7cbe7bfc5b53bee7325a989a375adbe0e39195c209c0b0368aadb3&scene=21#wechat_redirect)
