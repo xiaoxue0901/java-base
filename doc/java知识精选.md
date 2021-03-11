@@ -275,8 +275,10 @@
 
 # Spring
 **参考文献**
-1.[深入理解 Spring 事务原理 ](https://mp.weixin.qq.com/s/FIMhan9hxijTkG4uLyEwsw)
-2.[面试官: 讲讲 Spring 事务有哪些坑?](https://mp.weixin.qq.com/s/BRRELMbULFL-2eZRSehC7w)
+1. [深入理解 Spring 事务原理 ](https://mp.weixin.qq.com/s/FIMhan9hxijTkG4uLyEwsw)
+2. [面试官: 讲讲 Spring 事务有哪些坑?](https://mp.weixin.qq.com/s/BRRELMbULFL-2eZRSehC7w)
+3. [了解这些，你就可以在Spring启动时为所欲为了](https://mp.weixin.qq.com/s/ZQHagS3MZABH-dWGlMTulg)
+
 1.[万字 Spring Cloud Gateway2.0，面向未来的技术，了解一下？](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651485415&idx=2&sn=d0fe001960c1bc60131b4cbbd19e2e15&chksm=bd2518988a52918e4e51957acece723f04604f0c81c719eca5b1e3c03b407f0ec671c48efd5f&mpshare=1&scene=24&srcid=03037fpikP0aISD7szsOH2lz&sharer_sharetime=1614785067154&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[谈谈几个 Spring Cloud 常见面试题及答案](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651489281&idx=2&sn=613fd2403345382f4d20ab8673ad18ae&chksm=bd25e87e8a526168acfb33ddc0013d4c099c53072f3c7f3875f6c14a9fc3117a9d832802ae78&mpshare=1&scene=24&srcid=03035eCU84FaOd6IQW6TpAQH&sharer_sharetime=1614785003782&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
 1.[Spring 的 Bean 生命周期，11 张高清流程图及代码，深度解析](http://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651486951&idx=1&sn=cade003b51d142e26a515635e83bfaa2&chksm=bd2516988a529f8e01d3ee0e405a3f86c9427d390bb8af56f03b56828c245aa393c221970d4a&mpshare=1&scene=24&srcid=0303AftC9RfpkjdjhCDvss20&sharer_sharetime=1614784974796&sharer_shareid=0acafc1fb7821bd49f15ef63553c6711#rd)
@@ -319,10 +321,10 @@
 	   1.实例化Bean实例
 	   2.设置对象属性
 	   3.检查Aware的相关接口并设置相关依赖. (比如:实现 ApplicationContextAware 接口的 setApplicationContext 方法)
-	   4.BeanPostProcessor前置处理
+	   4.实现BeanPostProcessor接口进行前置处理, postProcessBeforeInitialization(bean初始化前操作)
 	   5.是否实现InitializingBean接口.(比如: 实现InitializingBean 接口的 afterPropertiesSet )
 	   6.是否配置自定义的init-method
-	   7.BeanPostProcessor后置处理
+	   7.BeanPostProcessor后置处理,postProcessorAfterInitialization(bean初始化后操作)
 	   8.注册Destruction相关回调接口
 	   		使用中
 	   9.是否实现DisposableBean接口
@@ -397,7 +399,38 @@
 		* 原因: Spring 事务用的是数据库的事务，如果数据库不支持事务，那 Spring 事务肯定是无法生效滴。
 	7. 如何保证Spring事务的连接唯一性
 		* Connection 在事务开始时封装在了 ThreadLocal 里，后面事务执行过程中，都是从 ThreadLocal中 取的。肯定能保证唯一，因为都是在一个线程中执行。
-	
+3. Spring启动监听方式:
+	* Bean的构造函数方式
+	* 使用@PostConstruct注解
+	* 实现InitializingBean接口
+	* 监听ApplicationListener事件
+	* 使用Constructor注入方式
+	* 实现Spring的CommondLinRunner
+	* SmartLifecycle机制
+	* 实现BeanPostProcessor
+4. Spring事件发布流程	
+	1. 要发布的事件要继承ApplicationEvent: `UserRegisterEvent extends ApplicationEvent`
+	2. 事件发布: 
+```java
+@Service
+@Slf4j
+public class UserService implements ApplicationEventPublisherAware {
+private ApplicationEventPublisher applicationEventPublisher;
+    @Override
+    public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
+        this.applicationEventPublisher = applicationEventPublisher;
+    }
+
+    public void register(String username) {
+        log.info("register 执行用户{}的注册逻辑", username);
+        // ...发布
+        applicationEventPublisher.publishEvent(new UserRegisterEvent(this, username));
+    }
+}
+```
+	3. 事件监听:
+		1. 实现接口ApplicationListener<UserRegisterEvent>
+		2. 使用注解: @EventListener
 # Netty
 [面试官：Netty的线程模型可不是Reactor这么简单 ](https://mp.weixin.qq.com/s/vaqzvQCAoEfZn03dWXJ2BQ)
 [Netty 实现原理浅析 ](https://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&mid=2651479592&idx=1&sn=b2aff56737d0e44667dd881d24ae27df&chksm=bd2532578a52bb41c1ed7f7cbe7bfc5b53bee7325a989a375adbe0e39195c209c0b0368aadb3&scene=21#wechat_redirect)
