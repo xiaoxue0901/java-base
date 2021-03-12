@@ -358,12 +358,21 @@
 			1. 概念: `Spring支持声明式事务, 即使用注解来选择需要事务的方法或类; 使用@Transactional注解在方法上表明该方法需要事务支持.`
 	3. AOP代理的两种实现
 		1. Java动态代理: `jdk是代理接口,私有方法必然不会存在接口里, 所以不会被拦截到;`
-		   1. 通过实现InvocationHandler接口创建自己的调用处理器.
+		    1. 通过实现InvocationHandler接口创建自己的调用处理器.
 			2. 通过为 Proxy 类指定 ClassLoader 对象和一组 interface 来创建动态代理类；
 			3. 通过反射机制获得动态代理类的构造函数，其唯一参数类型是调用处理器接口类型；
 			4. 通过构造函数创建动态代理类实例，构造时调用处理器对象作为参数被传入
 		2. CGLIB代理: `cglib是子类, private的方法,final方法不会出现在子类, 也不会被拦截`
-			1. 
+		    1. 是一个基于ASM的字节码生成库, 他运行我们在运行时对字节码进行修改和动态生成. CGLIB通过继承方式实现代理.
+			2. Enhancer: 来指定要代理的对象, 实际处理逻辑的对象, 最终通过create()方法得到代理对象, 对这个对象的所有非final方法的调用都会转发给MethodInterceptor. -> create()产生代理对象.
+			3. MethodInterceptor: 动态代理方法的调用都会转发到intercept()方法进行增强.
+			4. intercept(): proxy.invokeSuper(obj, args);
+	```java
+   Enhancer enhancer = new Enhancer();
+   enhancer.setSuperClass(目标对象类);
+   enhancer.setCallback(实现MethodInterceptor的类);
+   目标类 = enhancer.create();
+	```
 		3. 原理区别: 
 		   * java动态代理是利用反射机制生成一个实现代理接口的匿名类，在调用具体方法前调用InvokeHandler来处理。
 		   * cglib动态代理是利用asm开源包，对代理对象类的class文件加载进来，通过修改其字节码生成子类来处理。
@@ -753,6 +762,7 @@ redisObject{
 
 # RabbitMq
 [RabbitMQ实现即时通讯居然如此简单！连后端代码都省得写了？](https://mp.weixin.qq.com/s/NU4go-JPNVyDNVFx_QcMQg)
+[SpringBoot整合RabbitMQ实战](https://mp.weixin.qq.com/s/oEjS0RG_GC2WyLRS-WWfyQ)
 
 # Linux
 [还在百度Linux命令？推荐一套我用起来特顺手的命令](https://mp.weixin.qq.com/s/m0dFpUKuFsYN2HCK3gPOKQ)
