@@ -551,12 +551,20 @@ private ApplicationEventPublisher applicationEventPublisher;
 		2. 创建启动引导类: ServerBootstrap
 		3. 设置线程组: bootstrap.group(bossGroup, workGroup)
 		4. 设置IO模型: bootstrap.channel(NioServerSocketChannel.class);
-		5. 设置childHandler: 实现ChannelInitializer, 将服务端消息的业务逻辑处理交给自定义的ChannelHanderl对象
+		5. 设置childHandler: 实现ChannelInitializer, 将服务端消息的业务逻辑处理交给自定义的ChannelHander对象
 		6. 调用bootstrap.bind(port)绑定端口.
 		7. 自定义服务端ChannelHander处理消息
 		   * extends ChannelInboundHandlerAdapter; 
 		   * 重写channelRead(){ctx.writeAndFlush(msg)}: 服务端接收客户端发送的数据调用的方法;
-			* 重写exceptionCaught(...): 处理客户端消息发生异常的时候调用的方法
+		   * 重写exceptionCaught(...): 处理客户端消息发生异常的时候调用的方法
+	2. 客户端
+		1. 创建一个NioEventLoopGroup对象(线程组): group
+		2. 创建客户端启动引导类: Bootstrap
+		3. 通过.group(group)指定线程组
+		4. 通过.channel(NioSocketChannel.class)指定IO模型
+		5. 通过.childHandler实现ChannelInitializer接口, 指定客户端消息的业务逻辑处理对象ChannelHander
+		6. 通过bootstrap.connect(ip, port).sync()同步等待连接完成, 也可以通过bootstrap.connect().addListener()实现异步监听
+		
 	
 	
 # web
