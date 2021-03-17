@@ -1,9 +1,12 @@
 package com.autumn.demo.netty.ch00;
 
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
+
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author xql132@zcsmart.com
@@ -16,6 +19,7 @@ public class MyClinet extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         log.info("client receive:{}", msg);
+        ctx.writeAndFlush(Unpooled.copiedBuffer("hello server, i am client".getBytes(StandardCharsets.UTF_8)));
 
     }
 

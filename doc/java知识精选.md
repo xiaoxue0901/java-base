@@ -544,6 +544,21 @@ private ApplicationEventPublisher applicationEventPublisher;
 [「Netty实战 02」手把手教你实现自己的第一个 Netty 应用!新手也能搞懂](https://mp.weixin.qq.com/s/I0fJEW--0McrXw941INoRw)
 [「Netty实战 03」大白话 Netty 核心组件分析](https://mp.weixin.qq.com/s/n8PugpN7ixekfLhb48R2dA)
 
+**问题**
+1. Netty应用的流程
+	1. 服务端
+		1. 创建2个NioEventLoopGroup线程组: bossGroup(负责处理客户端连接请求), workGroup(负责每一条连接的具体读写数据的处理逻辑)
+		2. 创建启动引导类: ServerBootstrap
+		3. 设置线程组: bootstrap.group(bossGroup, workGroup)
+		4. 设置IO模型: bootstrap.channel(NioServerSocketChannel.class);
+		5. 设置childHandler: 实现ChannelInitializer, 将服务端消息的业务逻辑处理交给自定义的ChannelHanderl对象
+		6. 调用bootstrap.bind(port)绑定端口.
+		7. 自定义服务端ChannelHander处理消息
+		   * extends ChannelInboundHandlerAdapter; 
+		   * 重写channelRead(){ctx.writeAndFlush(msg)}: 服务端接收客户端发送的数据调用的方法;
+			* 重写exceptionCaught(...): 处理客户端消息发生异常的时候调用的方法
+	
+	
 # web
 [还分不清 Cookie、Session、Token、JWT？](https://mp.weixin.qq.com/s/TfJzvkF7B1lq_LNsbqMI0g)
 [《我想进大厂》之网络篇夺命连环12问 ](https://mp.weixin.qq.com/s/_79l2xe_n_PLr0XWRoBUvA)
@@ -770,13 +785,15 @@ redisObject{
 	2. 读已提交(read-commited)-问题:不可重复读(数据不一致): 读已提交指的是一个事务在提交之后，它所做的变更才能够让其他事务看到。
 	3. 可重复读(repeatable-read)-问题: 幻读: 可重复读指的是一个事务在执行的过程中，看到的数据是和启动时看到的数据是一致的。未提交的变更对其他事务不可见。
 	4. 串行化(serializable)-问题:性能差: 对于同一行记录，写会加写锁，读会加读锁。当出现读写锁冲突的时候，后访问的事务必须等前一个事务执行完成，才能继续执行。
-3. MySQL的基础架构
-	* 连接器: 管理连接, 包括权限认证
-	* 查询缓存: key-value结构,存在内存中. 不建议开启
-	* 分析器: 词法分析, 语法分析
-	* 优化器: 执行计划, 选择索引
-	* 执行器: 执行SQL, 返回结果
-	* 存储引擎: 存储数据,提供读写接口
+3. MySQL的基础架构(一条SQL是如何执行的)
+   	1. Server层
+		* 连接器: 管理连接, 权限验证
+		* 查询缓存: 命中则直接返回结果, key-value结构,存在内存中. 不建议开启(因为CUD操作会清空缓存)
+		* 分析器: 词法分析, 语法分析
+		* 优化器: 执行计划生成, 选择索引
+		* 执行器: 执行SQL,操作引擎, 返回结果
+    2. 存储引擎层
+		* 存储引擎: 存储数据,提供读写接口
 4. SQL的执行顺序	
 	`FROM(笛卡尔积)->ON->JOIN->WHERE->GROUP BY(计算表达式)->HAVING->SELECT->DISTINCT->UNION->ORDER BY->LIMIT`
 5. 使用UNION和UNION ALL
@@ -848,7 +865,52 @@ redisObject{
 	[postgreSQL与MySQL的比较](https://blog.csdn.net/u012679583/article/details/78291846)
 	* PG具备更高的可靠性，对数据一致性完整性的支持高于MySQL，因此PG更加适合严格的企业应用场景（比如金融、电信、ERP、CRM）；
 	* MySQL查询速度较快，更加适合业务逻辑相对简单、数据可靠性要求较低的互联网场景（比如google、facebook、alibaba）。
-
+12. 日志系统: 一条SQL更新语句是如何执行的?
+	1. 更新流程涉及2个重要的日志模块: redo log(重做日志)和binlog(归档日志)
+	2. redo log: InnoDB特有的日志
+	   * 当有一条记录需要更新的时候, InnoDB 引擎就会先把记录写到 redo log（粉板）里面，并更新内存，这个时候更新就算完成了。同时，InnoDB 引擎会在适当的时候，将这个操作记录更新到磁盘里面，而这个更新往往是在系统比较空闲的时候做
+		* InnoDB 的 redo log 是固定大小的，比如可以配置为一组 4 个文件，每个文件的大小是 1GB，那么这块“粉板”总共就可以记录 4GB 的操作。从头开始写，写到末尾就又回到开头循环写
+		* crash-safe: 有了 redo log，InnoDB 就可以保证即使数据库发生异常重启，之前提交的记录都不会丢失，这个能力称为 crash-safe
+	3. binlog: Server层日志
+		* redo log 是 InnoDB 引擎特有的；binlog 是 MySQL 的 Server 层实现的，所有引擎都可以使用。
+		* redo log 是物理日志，记录的是“在某个数据页上做了什么修改”；binlog 是逻辑日志，记录的是这个语句的原始逻辑，比如“给 ID=2 这一行的 c 字段加 1 ”
+		* redo log 是循环写的，空间固定会用完；binlog 是可以追加写入的。“追加写”是指 binlog 文件写到一定大小后会切换到下一个，并不会覆盖以前的日志。
+	4. update执行流程: 取id=2这行数据->数据页在内存中(不在, 要用引擎读出来)->返回行数据-> 将这行值加1->写入新行
+		-> 新行更新到内存->写入redolog,处于prepare阶段->写入binlog->提交事务,处于commit状态.
+	5. 两阶段提交: 让binlog和redolog之间的逻辑一致.	(prepare, commit)   
+	4. redo log 中innodb_flush_log_at_trx_commit设置1,表示每次事务的 redo log 都直接持久化到磁盘
+	5. binlog中sync_binlog设置1, 表示每次事务的 binlog 都持久化到磁盘
+13. 事务隔离的实现
+	1. 不同时刻启动的事务会有不同的read-view: 同一条记录在系统中可以存在多个版本，就是数据库的多版本并发控制（MVCC）
+	2. 鉴于事务的回滚机制, 不要使用长事务, 长事务的回滚记录会大量占用存储空间.
+	3. 事务的启动方式: 
+		1. 显示启动: begin(start transaction) - commit - rollback
+		2. 自动提交关掉: set autocommit=0.  会导致长事务; 建议用set autocommit=1
+		3. set autocommit=1 -> commit work and chain(提交事务并自动启动下一个事务)
+14. 索引
+	1. 索引常见模型
+		1. 哈希表: key-value, hash冲突后拉出一个链表. 适合等值查询场景
+		2. 有序数组. 查询效率高, 插入和更新慢. 适合静态存储引擎
+		3. 二叉树. 父节点左子树所有结点的值小于父节点的值，右子树所有结点的值大于父节点的值
+			查询, 更新的时间复杂度是O(log(N))
+    2. InnoDB的索引模型
+		1. 在InnoDB中, 表都是根据主键顺序以索引的形式存放的, 这种存储方式的表称为索引组织表.
+		2. InnoDB使用了B+树索引模型, 故数据都是存在B+树中的.
+		3. 每一个索引在InnoDB中对应一颗B+树
+	3. 基于主键索引和普通索引的查询有什么区别?
+		1. 主键查询方式，则只需要搜索 ID 这棵 B+ 树；
+		2. 普通索引查询方式，则需要先搜索 k 索引树，得到 ID 的值为 500，再到 ID 索引树搜索一次。这个过程称为回表。
+		3. 总结:基于非主键索引的查询需要多扫描一颗索引树
+	4. 索引维护(为啥在自增键上建索引)
+		1. B+树为了维护索引有序性, 在插入新值的时候要做必要维护. (1.插入一个中间值, 数据页满了后,要申请新数据页(页分裂); 页合并)
+		2. 业务逻辑字段做主键, 不容易保证插入有序.写入成本高
+		3. 存储空间: int/bitint类型的占用空间小.
+		4. 主键长度越小, 普通索引的叶子节点就越小, 普通索引占用的空间也就越小.
+	5. 索引优化
+		1. 覆盖索引
+		2. 最左前缀原则
+		3. 索引下推: 在索引遍历过程中,对索引中包含的字段优先做判断, 直接过滤掉不满足条件的记录, 减少回表次数.
+		
 # PG
 **参考资料**
 1. [PG 更新统计信息](https://www.cnblogs.com/jenvid/p/10180550.html)

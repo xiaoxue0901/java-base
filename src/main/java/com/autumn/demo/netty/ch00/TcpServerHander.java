@@ -33,6 +33,7 @@ public class TcpServerHander extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         log.info("server receive message:{}", msg);
+        // 业务处理.
         ctx.channel().writeAndFlush("accepte message "+ msg);
         ctx.close();
     }
