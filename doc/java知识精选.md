@@ -564,6 +564,19 @@ private ApplicationEventPublisher applicationEventPublisher;
 		4. 通过.channel(NioSocketChannel.class)指定IO模型
 		5. 通过.childHandler实现ChannelInitializer接口, 指定客户端消息的业务逻辑处理对象ChannelHander
 		6. 通过bootstrap.connect(ip, port).sync()同步等待连接完成, 也可以通过bootstrap.connect().addListener()实现异步监听
+        8. 自定义客户端ChannelHandler处理消息
+            * extends ChannelInboundHandlerAdapter
+            * 重写channelActive(): 客户端和服务端连接建立后被调用
+            * 重写channelRead(): 客户端接收服务端发送的数据调用的方法
+            * 重写exceptionCaught(): 处理消息发生异常的时候被调用
+2. Netty的核心组件
+	1. ByteBuf: 字节容器
+	2. ServerBootstrap和Bootstrap
+	3. Channel: NioServerSocketChannel, NioSocketChannel
+	4. EventLoop, EventLoopGroup
+	5. ChannelHandler, ChannelPipeline, ChannelHandlerContext
+	6. ChannelFuture
+3. 	
 		
 	
 	
@@ -929,8 +942,74 @@ redisObject{
 2. [分布式应用为啥要用ZooKeeper ？ZooKeeper 常见概念解读！](https://mp.weixin.qq.com/s/6TPXZPkRSTuT7kOeL9h4AA)
 
 # RabbitMq
+**参考资料**
 [RabbitMQ实现即时通讯居然如此简单！连后端代码都省得写了？](https://mp.weixin.qq.com/s/NU4go-JPNVyDNVFx_QcMQg)
 [SpringBoot整合RabbitMQ实战](https://mp.weixin.qq.com/s/oEjS0RG_GC2WyLRS-WWfyQ)
+## 总结
+1. 消息中间件的应用场景
+	1. 应用解耦
+	2. 同步转异步
+	3. 流量削峰
+	4. 日志处理
+2. RabbitMQ的工作模型
+	1. 生产者--routing key--(broker)--connection--消费者
+	2. broker: 包含多个虚拟机, 每个虚拟机中包含交换机和队列
+	3. 生产者发送消息通过routing key匹配到对应的交换机
+	4. 交换机通过binding key匹配到对应的队列
+	5. broker和消费者建立Connection(包含多个channel), 消费者从指定的队列中拿到消息, 处理消息
+3. RabbitMQ的交换机类型
+	1. direct exchange(直连交换机)
+	2. topic exchange(主题交换机)
+	3. fanout exchange(广播交换机)
+4. 	怎么自动删除没人消费的消息?
+	1. 设置过期时间
+5. 无法路由的消息, 去了哪里?
+	1. 死信队列
+6. 可以让消息优先得到消费么?
+	1. 设置优先级
+7. 如何实现延迟发送消息
+	* 设置有效期+死信队列
+9. RabbitMq的可靠性投递
+	1. 在4个环节实现可靠性. 
+		1. 消息从生产者发送到exchange
+		    1. transaction(事务)模式
+			2. Confirm(确认)模式
+		2. 消息从exchange路由到队列
+		    1. ReturnListener: 实现将无法路由的消息返回给生产者
+			2. 备份交换机: 无法路由的消息发送到这个交换机上.
+		3. 消息在Queue中存储
+		    1. 交换机持久化
+			2. 队列持久化
+			3. 消息持久化
+		4. 消费者订阅并消费消息
+		* 消息确认机制: basic.ack, basic.nack, basic.reject
+	2. 消费者回调: 消费者处理完消息后, 回调生产者的api, 通知消息处理完毕.
+	3. 补偿机制: 对于一定时间内没有响应的消息, 设置定时重发机制.
+	4. 消息幂等性: 对每条消息生成唯一一个业务id, 通过日志或者建表来做重复控制
+	5. 消息的顺序性: 消费者消费的顺序和生产者生产的顺序一致.
+		
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Linux
 [还在百度Linux命令？推荐一套我用起来特顺手的命令](https://mp.weixin.qq.com/s/m0dFpUKuFsYN2HCK3gPOKQ)
