@@ -781,6 +781,36 @@ redisObject{
 		2. 命令入队
 		3. 执行事务(EXEC), 撤销事务(DISCARD)
 		0. unwatch: 取消监视之前通过WATCH 命令监视的key，通过执行EXEC 、DISCARD 两个命令之前监视的key也会被取消监视
+14. Redis的分布式锁的使用方式
+	* [七种方案！探讨Redis分布式锁的正确使用姿势！](https://mp.weixin.qq.com/s/4fsD1yHmR0BMx9Mpv89ouw)
+	* 分布式锁: `分布式系统中不同进程共同访问共享资源的一种锁的实现.`
+	* 分布式锁的特征:
+		1. 互斥性
+		2. 锁超时释放
+		3. 可重入性
+		4. 高可用,高性能
+		5. 安全性
+	1. SETNX(set if not exists)+EXPIRE: 
+	   	1. setnx key value: 如果key不存在,则setnx成功返回1; 如果key已存在, 则setnx返回0
+	    2. 抢到锁后, 使用expire给锁设置一个有效期.防止锁忘记释放.
+		3. 缺点: 发生异常锁得不到释放
+	2. SETNX+value值是(系统时间+过期时间): 把过期时间放在value值中, 加锁失败后,再出value值校验下即可.
+	3. 使用Lua脚本(包含SETNX+EXPIRE两条指令): 使用lua脚本保持原子一致性.
+	4. SET的扩展命令(SET EX PX NX)
+	5. SET EX PX NX + 校验唯一随机值, 再释放锁
+	6. 开源框架Redisson: 
+	   1. 使用while循环获取锁, 加锁成功后, 启动watch dog后台线程, 每隔10秒检查锁,如果线程还持有锁,就不断延长key的生存时间.
+	   2. 执行lua脚本保持原子一致性
+	7. 多机实现的分布式锁Redlock
+```java
+// setnx+expire
+if(jedis.setnx(key_resource_id, lock_value)==1){// 加锁
+		expire(key_resource_id,100); // 设置过期时间
+		do something// 业务请求
+		} finally{
+    jedis.del(key_resource_id);// 释放锁
+		}	
+```
 
 # MySQL
 **参考文献**
@@ -793,7 +823,7 @@ redisObject{
 7. [炸裂！MySQL 82 张图带你飞 ](https://mp.weixin.qq.com/s/QSQ1m_aHw4wBhv7_AQHDow)
 8. [很用心的为你写了 9 道 MySQL 面试题](https://mp.weixin.qq.com/s/EDWYhnqDf0WGIbkpq_m3RQ)
 9. [MySQL常见面试题](https://sowhat.blog.csdn.net/article/details/71158104)
-
+10. [MySQL索引底层：B+树详解](https://mp.weixin.qq.com/s/i1uV8yLGO1avhz3OhXEBDQ)
 **总结**
 1. MySQL事务四大特性
 	`事务概念: 事务是一组操作，组成这组操作的各个单元，要不全都成功要不全都失败，这个特性就是事务。`
