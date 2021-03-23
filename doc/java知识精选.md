@@ -935,6 +935,7 @@ redisObject{
 # PG
 **参考资料**
 1. [PG 更新统计信息](https://www.cnblogs.com/jenvid/p/10180550.html)
+2. [MySQL和PG的区别](https://blog.csdn.net/u012414189/article/details/84064146)
 # Zookeeper
 > ZooKeeper 是 Apache 软件基金会的一个软件项目，它为大型分布式计算提供开源的分布式配置服务、同步服务和命名注册。ZooKeeper 曾经是 Hadoop 的一个子项目，但现在是一个顶级独立的开源项目。
 > 一致性在 ZK 中是最终一致性，ZK 无法保证实时的强一致性，有一个时间窗口，但是最终 ZK 集群中的数据都会是一样的。
