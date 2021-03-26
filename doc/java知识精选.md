@@ -824,6 +824,7 @@ if(jedis.setnx(key_resource_id, lock_value)==1){// 加锁
 8. [很用心的为你写了 9 道 MySQL 面试题](https://mp.weixin.qq.com/s/EDWYhnqDf0WGIbkpq_m3RQ)
 9. [MySQL常见面试题](https://sowhat.blog.csdn.net/article/details/71158104)
 10. [MySQL索引底层：B+树详解](https://mp.weixin.qq.com/s/i1uV8yLGO1avhz3OhXEBDQ)
+11. [阿里一面，给了几条SQL，问需要执行几次树搜索操作？](https://mp.weixin.qq.com/s/nr7NIQ6k8sgiY8Me6fvESw)
 **总结**
 1. MySQL事务四大特性
 	`事务概念: 事务是一组操作，组成这组操作的各个单元，要不全都成功要不全都失败，这个特性就是事务。`
